@@ -1,0 +1,54 @@
+SBAR << (WRB << when)
+SBAR << (VP << asserted)
+VP << (VBZ << is)
+VP << (RB << LOW)
+CC < and
+VP << (ADVP << then)
+
+Antecedent: 
+AWVALID is asserted
+AWREADY is LOW
+Consequent:
+AWADDR remains stable
+
+Antecedent: 
+AWVALID is asserted
+AWREADY is LOW
+Consequent:
+AWLEN remains stable
+
+Antecedent: 
+AWVALID is asserted
+AWREADY is LOW
+Consequent:
+AWSIZE remains stable
+
+Antecedent: 
+AWVALID is asserted
+AWREADY is LOW
+Consequent:
+AWBURST remains stable
+
+Antecedent: 
+AWVALID is asserted
+AWREADY is LOW
+Consequent:
+AWID must remain stable
+
+Antecedent:
+AWVALID is HIGH
+AWCACHE[1] is LOW
+Consequent:
+AWCACHE[3:2] are also LOW
+
+if (AWVALID == 1)
+	if (AWREADY == 0)
+		AWADDR = 1
+	end
+end
+
+if (AWVALID == 1)
+	if (AWCACHE[1] == 0)
+		AWCACHE[3:2] = 0
+	end
+end

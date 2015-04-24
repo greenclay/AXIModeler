@@ -1,0 +1,4 @@
+If the button is pressed then the light turns on.
+The light turns on when the button has been pressed.
+when the button is pressed, the light turns on.
+The button is pressed then the light turns on.

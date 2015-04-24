@@ -1,0 +1,19 @@
+# 4.1
+The size of a write transfer does not exceed the width of the data interface.
+A sequence of locked transactions must use a single ID.
+Recommended that a master must not change AWPROT or AWCACHE during a sequence of locked accesses.
+Recommended that all locked transaction sequences remain within the same 4KB address region.
+Recommended that locked transaction sequences are limited to two transactions.
+A value of X on AWVALID is not permitted when not in reset.
+
+4.2
+Write strobes must only be asserted for the correct byte lanes as determined from the:
+• start address
+• transfer size
+• beat number.
+
+# 4.4
+A read transaction with a burst type of WRAP
+must have an aligned address
+A sequence of locked transactions must use a
+single ID

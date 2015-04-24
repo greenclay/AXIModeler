@@ -1,0 +1,32 @@
+# SECTION 4.1
+AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
+
+AWLEN remains stable when AWVALID is asserted and AWREADY is LOW.
+
+AWSIZE remains stable when AWVALID is asserted and AWREADY is LOW.
+
+AWBURST remains stable when AWVALID is asserted and AWREADY is LOW.
+
+AWID must remain stable when AWVALID is asserted and AWREADY is LOW.
+
+when AWVALID is HIGH and AWCACHE[1] is LOW then AWCACHE[3:2] are also LOW.
+
+AWVALID is LOW for the first cycle after ARESETn goes HIGH.
+
+when AWVALID is asserted then it remains asserted until AWREADY is HIGH.
+
+# 4-17 examples SECTION 4.2
+A value of X on WDATA is not permitted when WVALID is HIGH.
+WVALID is LOW for the first cycle after ARESETn goes HIGH.
+A value of X on WVALID is not permitted when not in reset.
+
+# SECTION 4.3
+A slave must only give a write response after the last write data item is transferred.
+
+All write transaction addresses are matched with a corresponding buffered response.
+
+A value of X on BVALID is not permitted when not in reset.
+
+Recommended that BREADY is asserted within MAXWAITS cycles of BVALID being asserted.
+
+A slave must not give a write response before the write address.
