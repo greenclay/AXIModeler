@@ -24,11 +24,11 @@ public class AXI {
 		result.fillSignals();
 		result.printSignals();
 	
-		result.printVerilog();
+		result.makeVerilog();
 		// result.makeSignals(phrase)
 		// result.searchRWOTable();
 		// result.searchTransactionTable();
-		System.out.println("----");
+		System.out.println("***********************************************************");
 	}
 
 	public static void analyzeVerb(ArrayList<String> phrase) {

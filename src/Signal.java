@@ -37,4 +37,16 @@ public class Signal {
 		
 		System.out.println(str);
 	}
+
+	public RWO getRWO() {
+		return rwo;
+	}
+
+	public String getVerb() {
+		return verb;
+	}
+
+	public String getAssignment() {
+		return assignment;
+	}
 }

@@ -8,6 +8,7 @@ public class TransactionTable {
 	public static HashMap<String, String> tableOutputs;
 	private static String high = " == 1";
 	private static String low = " == 0";
+	private static String stable = "$stable";
 
 	public static void init() {
 		tableTrans = new HashMap<String,String>();
@@ -16,7 +17,7 @@ public class TransactionTable {
 		tableTrans.put("is HIGH", high);
 
 		tableTrans.put("are also LOW", low);
-		tableTrans.put("remains stable", high);
+		tableTrans.put("stable", stable);
 	}
 	public static String searchTrans(String str) {
 		String s = tableTrans.get(str);

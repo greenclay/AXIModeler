@@ -9,7 +9,7 @@ public class AntCon {
 	ArrayList<String> con;
 	ArrayList<String> con2;
 	ArrayList<Signal> conSignals;
-	Verilog verilog;
+	VerilogMaker verilog;
 
 	public AntCon(ArrayList<String> ant, ArrayList<String> con) {
 		this.ant = ant;
@@ -18,7 +18,7 @@ public class AntCon {
 		con2 = new ArrayList<String>();
 		conSignals = new ArrayList<Signal>();
 		antSignals = new ArrayList<Signal>();
-		verilog = new Verilog(conSingals, antSignals);
+
 	}
 	
 	public void printSignals() {
@@ -30,49 +30,51 @@ public class AntCon {
 		}
 	}
 	
-	public void printVerilog() {
-		for (int i=0; i< antSignals.size(); i++) {
-			antSignals.get(i).verilogAnt(i);
+	public void makeVerilog() {
+		if(conSignals.size() > 0 || antSignals.size() > 0) {
+			verilog = new VerilogMaker(antSignals, conSignals);
+			
+			for (String str : verilog.getVerliog()) {
+				System.out.println(str);
+			}
 		}
-		for (int i=0; i< conSignals.size(); i++) {
-			conSignals.get(i).verilogCon(i);
-		}
-
 	}
 	
 	public void fillSignals() {
 		// make Signals out of the ant/ant2 and con/con2 phrases
-		Signal signal = makeSignals(ant);
+		Signal signal = makeAntSignals(ant);
 		if(signal != null) {
 			antSignals.add(signal);
 		}
 		
-		signal = makeSignals(ant2);
+		signal = makeAntSignals(ant2);
 		if(signal != null) {
 			antSignals.add(signal);
 		}
 		
-		signal = makeSignals(con);
+		signal = makeConSignals(con);
 		if(signal != null) {
 			conSignals.add(signal);
 		}
 		
-		signal = makeSignals(con2);
+		signal = makeConSignals(con2);
 		if(signal != null) {
 			conSignals.add(signal);
 		}
 	}
 	
-	public Signal makeSignals(ArrayList<String> phrase) {
+	public Signal makeAntSignals(ArrayList<String> phrase) {
 		Signal signal = null;
-		
+//		System.out.println(phrase);
 		// Look for an RWO in the table that matches the phrase
 
 		for (String str : phrase) {
 			RWO rwo = RWOTable.searchInput(str);
+//			System.out.println(str + " " + rwo);
 			if (rwo != null) {
 				for (String str2 : phrase) {
 					String assignment = TransactionTable.searchTrans(str2);
+//					System.out.println(str2 + " " + assignment);
 						if (assignment != null) {
 							signal = new Signal(rwo, str2, assignment);
 							break;
@@ -83,6 +85,27 @@ public class AntCon {
 		return signal;
 	}
 
+	public Signal makeConSignals(ArrayList<String> phrase) {
+		Signal signal = null;
+//		System.out.println(phrase);
+		// Look for an RWO in the table that matches the phrase
+
+		for (String str : phrase) {
+			RWO rwo = RWOTable.searchOutput(str);
+//			System.out.println(str + " " + rwo);
+			if (rwo != null) {
+				for (String str2 : phrase) {
+					String assignment = TransactionTable.searchTrans(str2);
+//					System.out.println(str2 + " " + assignment);
+						if (assignment != null) {
+							signal = new Signal(rwo, str2, assignment);
+							break;
+						}
+				}
+			}
+		}		
+		return signal;
+	}
 	public void searchRWOTable() {
 		// Search ant
 		for (String str : ant) {
