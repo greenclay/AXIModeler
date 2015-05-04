@@ -1,0 +1,4 @@
+AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
+When AWVALID is HIGH and AWCACHE[1] is LOW then AWCACHE[3:2] are also LOW.
+When AWVALID is HIGH and AWCACHE is LOW then AWCACHE are also LOW.
+When AWVALID is asserted then it remains asserted until AWREADY is HIGH.

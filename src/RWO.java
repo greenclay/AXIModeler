@@ -17,6 +17,11 @@ public class RWO {
 		this.direction = direction;
 	}
 	
+	public void print() {
+		String str = "name: " + name + ", direction: " + direction  + ", type: " + type + ", num signals: " + numSignals;
+		System.out.println(str);
+	}
+	
 	public String getName() {
 		return name;
 	}

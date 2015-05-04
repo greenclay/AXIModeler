@@ -9,12 +9,60 @@ public class AXI {
 
 	// Check for Cons when Ante
 	public static void parseAndPrint(Tree tree) {
-		System.out.println();
+
 		AntCon result = checkWhen(tree);
-		
+		checkAnd(result);
 		result.printAnt();
 		result.printCon();
+		
+		analyzeVerb(result.ant);
+		analyzeVerb(result.ant2);
+		analyzeVerb(result.con);
+		analyzeVerb(result.con2);
+	
+		System.out.println();
+		result.fillSignals();
+		result.printSignals();
+	
+		result.printVerilog();
+		// result.makeSignals(phrase)
+		// result.searchRWOTable();
+		// result.searchTransactionTable();
 		System.out.println("----");
+	}
+
+	public static void analyzeVerb(ArrayList<String> phrase) {
+		// Look for phrases like is LOW
+		for (int i = 0; i < phrase.size()-1; i++) {
+			if(phrase.get(i).equals("is")) {
+				if(phrase.get(i+1).equals("LOW")) {
+					phrase.set(i, "is LOW");
+				}
+				else if (phrase.get(i+1).equals("HIGH")) {
+					phrase.set(i, "is HIGH");
+				}
+			}
+			if(phrase.get(i).equals("are")) {
+				if(phrase.get(i+1).equals("also") && phrase.get(i+1).equals("LOW")) {
+					phrase.set(i, "are also LOW");
+				}
+			}
+		}
+	}
+
+	public static void checkAnd(AntCon antcon) {
+		AntCon thisAntcon = antcon;
+		if (checkAnd(antcon.getAnt())) {
+			ArrayList<ArrayList<String>> split1 = splitOnAnd(antcon.getAnt());
+			antcon.setAnt(split1.get(0));
+			antcon.setAnt2(split1.get(1));
+		}
+
+		if (checkAnd(antcon.getCon())) {
+			ArrayList<ArrayList<String>> split2 = splitOnAnd(antcon.getCon());
+			antcon.setCon(split2.get(0));
+			antcon.setCon2(split2.get(1));
+		}
 	}
 
 	public static AntCon checkWhen(Tree tree) {
@@ -45,7 +93,9 @@ public class AXI {
 					String str = treeWords.get(i);
 					conArr.add(str);
 				}
+
 				antCon = new AntCon(antArr, conArr);
+				return antCon;
 			}
 
 			ArrayList<String> treeWords = getTreeWords(tree);
@@ -71,14 +121,30 @@ public class AXI {
 		return antCon;
 	}
 
-	public ArrayList<ArrayList<String>> splitOnAnd(ArrayList<String> strArr) {
+	public static ArrayList<ArrayList<String>> splitOnAnd(
+			ArrayList<String> strArr) {
+		int newLine = 0;
+		ArrayList<String> before = new ArrayList<String>();
 
-		
-		return null;
+		ArrayList<String> after = new ArrayList<String>();
+		for (int i = 0; i < strArr.size(); i++) {
+			if (strArr.get(i).toLowerCase().equals("and")) {
+				newLine = i + 1;
+				break;
+			}
+			before.add(strArr.get(i));
+		}
+		for (int i = newLine; i < strArr.size(); i++) {
+			after.add(strArr.get(i));
+		}
+		ArrayList<ArrayList<String>> returnArr = new ArrayList<ArrayList<String>>();
+		returnArr.add(before);
+		returnArr.add(after);
+		return returnArr;
 	}
 
 	// Check if the string has an And in it
-	public boolean checkAnd(ArrayList<String> strArr) {
+	public static boolean checkAnd(ArrayList<String> strArr) {
 		for (String str : strArr) {
 			if (str.equals("and")) {
 				return true;

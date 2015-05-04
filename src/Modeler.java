@@ -19,7 +19,7 @@ public class Modeler {
 
 	public static void main(String[] args) {
 		LexicalizedParser lp = LexicalizedParser
-				.loadModel("C:\\c\\englishPCFG.caseless.ser.gz");
+				.loadModel("C:\\c\\englishPCFG.ser.gz");
 
 		ioList = new ArrayList<InputOutput>();
 		RWOTable.init();
@@ -32,8 +32,6 @@ public class Modeler {
 		// io.print();
 		// }
 
-		System.out.println("Antecedent: A, pressed");
-		System.out.println("Consequent: A, turns on");
 	}
 
 	private static void parseSentences(LexicalizedParser lp) {
@@ -65,7 +63,7 @@ public class Modeler {
 
 			System.out.println("SENTENCE - "
 					+ gottenSentence.getSentenceString());
-			System.out.println(gottenSentence.kBest.get(0).object());
+//			System.out.println(gottenSentence.kBest.get(0).object());
 			Tree tree = gottenSentence.kBest.get(0).object();
 			// /////////////////////////////////////// FOPC PARSER SPECIAL
 			// CLASS:
@@ -76,7 +74,8 @@ public class Modeler {
 //			}
 
 			// Start AXI Parsing
-			
+			RWOTable.init();
+			TransactionTable.init();
 			AXI.parseAndPrint(tree);
 			System.out.println();
 		}

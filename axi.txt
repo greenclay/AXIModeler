@@ -1,3 +1,8 @@
 AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
-when AWVALID is HIGH and AWCACHE[1] is LOW then AWCACHE[3:2] are also LOW.
+# when AWVALID is HIGH and AWCACHE[1] is LOW then AWCACHE[3:2] are also LOW.
+when AWVALID is HIGH and AWCACHE1 is LOW then AWCACHE32 are also LOW.
 when AWVALID is asserted then it remains asserted until AWREADY is HIGH.
+A value of X on AWID is not permitted when AWVALID is HIGH.
+
+# 4.6
+CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH.
