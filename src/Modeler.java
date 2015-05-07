@@ -19,7 +19,7 @@ public class Modeler {
 
 	public static void main(String[] args) {
 		LexicalizedParser lp = LexicalizedParser
-				.loadModel("C:\\c\\englishPCFG.ser.gz");
+				.loadModel("lib/englishPCFG.ser.gz");
 
 		ioList = new ArrayList<InputOutput>();
 		RWOTable.init();

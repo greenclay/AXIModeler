@@ -1,23 +1,38 @@
+import java.text.MessageFormat;
 import java.util.ArrayList;
 
 
 public class VerilogMaker {
 	ArrayList<String> verilog;
-	
+	ArrayList<Signal> antSignals;
+	ArrayList<Signal> conSignals;
+
 	public VerilogMaker( ArrayList<Signal> antSignals, ArrayList<Signal> conSignals) {
 		verilog = new ArrayList<String>();
+		this.antSignals = antSignals;
+		this.conSignals = conSignals;
 		
 		String line1 = "assert property (@(posedge clock)";
 		verilog.add(line1);
 		if(antSignals.size() > 0 ) antVerilog(antSignals);
-		if(conSignals.size() > 0 ) conVerilog(conSignals);
+		if(conSignals.size() > 0 ) conVerilog();
 	}
 	
-	private void conVerilog(ArrayList<Signal> conSignals) {
+	private void conVerilog() {
 		Signal signal1 = conSignals.get(0);
-		String line;
+		String line = null;
+		
 		if(conSignals.size() == 1) {
-			line = "|-> " + signal1.getAssignment() + "(" + signal1.getRWO().getName() + ");";
+			
+			// if 
+			if (signal1.getAssignment().equals("$stable")) {
+				line = "|-> " + signal1.getAssignment() + "(" + signal1.getRWO().getName() + ");";				
+			} else if (signal1.getAssignment().equals(" == 1") || signal1.getAssignment().equals(" == 0")) {
+				line = "|-> " + "(" + signal1.getRWO().getName() + signal1.getAssignment() + ");";								
+			} else if (signal1.getAssignment().equals("cluster3")) {
+				line = MessageFormat.format("|-> (##1 $stable(<{0}>) [*1:$] ##1 (<{1}> == <{2}>)));", conSignals.get(0).getRWO().getName(
+						), signal1.getRWO().getName(),"value of signal 1");
+			}
 		}
 		// 2 phrases/signals
 		else {

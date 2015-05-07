@@ -43,8 +43,15 @@ public class AXI {
 				}
 			}
 			if(phrase.get(i).equals("are")) {
-				if(phrase.get(i+1).equals("also") && phrase.get(i+1).equals("LOW")) {
+				if(phrase.get(i+1).equals("also") && phrase.get(i+2).equals("LOW")) {
 					phrase.set(i, "are also LOW");
+				}
+			}
+			
+			// Check for cluster 3
+			if(phrase.get(i).equals("remains")) {
+				if(phrase.get(i+1).equals("asserted") && phrase.get(i+2).equals("until")) {
+					phrase.set(i, "remains asserted until");
 				}
 			}
 		}

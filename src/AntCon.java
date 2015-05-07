@@ -12,6 +12,7 @@ public class AntCon {
 	VerilogMaker verilog;
 
 	public AntCon(ArrayList<String> ant, ArrayList<String> con) {
+
 		this.ant = ant;
 		this.con = con;
 		ant2 = new ArrayList<String>();
@@ -64,13 +65,16 @@ public class AntCon {
 	}
 	
 	public Signal makeAntSignals(ArrayList<String> phrase) {
+		
 		Signal signal = null;
 //		System.out.println(phrase);
+		
 		// Look for an RWO in the table that matches the phrase
-
 		for (String str : phrase) {
 			RWO rwo = RWOTable.searchInput(str);
 //			System.out.println(str + " " + rwo);
+			
+			// If matching rwo was found in the rwotable
 			if (rwo != null) {
 				for (String str2 : phrase) {
 					String assignment = TransactionTable.searchTrans(str2);

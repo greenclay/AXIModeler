@@ -13,17 +13,19 @@ public class RWOTable {
 		tableInputs.put("switch", new RWO("switch", 1, "boolean", "in"));
 		tableInputs.put("switch", new RWO("switch", 1, "boolean", "in"));
 		tableInputs.put("switch", new RWO("switch", 1, "boolean", "in"));
-		tableInputs.put("AWVALID", new RWO("AWVALID signal", 1, "boolean", "in"));
-		tableInputs.put("AWREADY", new RWO("AWREADY signal", 1, "boolean", "in"));
-		tableInputs.put("CSYSACK", new RWO("CSYSACK signal", 1, "boolean", "in"));
-		tableInputs.put("AWCACHE1", new RWO("AWCACHE1 signal", 1, "boolean", "in"));
+		tableInputs.put("AWVALID", new RWO("AWVALID", 1, "boolean", "in"));
+		tableInputs.put("AWREADY", new RWO("AWREADY", 1, "boolean", "in"));
+		tableInputs.put("CSYSACK", new RWO("CSYSACK", 1, "boolean", "in"));
+		tableInputs.put("AWCACHE1", new RWO("AWCACHE1", 1, "boolean", "in"));
 		
 		// Output table
 		tableOutputs.put("light", new RWO("light", 1, "boolean", "out"));
-		tableOutputs.put("AWADDR", new RWO("AWADDR signal", 1, "boolean", "out"));
-		tableOutputs.put("AWCACHE32", new RWO("AWCACHE32 signal", 1, "boolean", "out"));
-		tableOutputs.put("AWID", new RWO("AWID signal", 1, "boolean", "out"));
-		tableOutputs.put("CSYSREQ", new RWO("CSYSREQ signal", 1, "boolean", "out"));
+		tableOutputs.put("AWADDR", new RWO("AWADDR", 1, "boolean", "out"));
+		tableOutputs.put("AWCACHE32", new RWO("AWCACHE32", 1, "boolean", "out"));
+		tableOutputs.put("AWID", new RWO("AWID", 1, "boolean", "out"));
+		tableOutputs.put("CSYSREQ", new RWO("CSYSREQ", 1, "boolean", "out"));
+		tableOutputs.put("AWREADY", new RWO("AWREADY", 1, "boolean", "out"));
+
 	}
 
 	public static RWO searchInput(String str) {

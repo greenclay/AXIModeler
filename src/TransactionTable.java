@@ -9,7 +9,8 @@ public class TransactionTable {
 	private static String high = " == 1";
 	private static String low = " == 0";
 	private static String stable = "$stable";
-
+	private static String cluster3 = "cluster3";
+	
 	public static void init() {
 		tableTrans = new HashMap<String,String>();
 		tableTrans.put("asserted", high);
@@ -18,10 +19,15 @@ public class TransactionTable {
 
 		tableTrans.put("are also LOW", low);
 		tableTrans.put("stable", stable);
+		
+		// cluster 3
+		tableTrans.put("remains asserted until", cluster3);
 	}
 	public static String searchTrans(String str) {
 		String s = tableTrans.get(str);
 		return s;
 	}
+	
+	
 	
 }

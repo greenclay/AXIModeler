@@ -12,7 +12,7 @@ public class RWO {
 		this.type = type;
 		
 		if(!direction.equals("in") || !direction.equals("out")) {
-			//throw new IllegalArgumentException("direction must either be \"in\" or \"out\"");
+//			throw new IllegalArgumentException("direction must either be \"in\" or \"out\"");
 		}
 		this.direction = direction;
 	}
