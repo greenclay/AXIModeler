@@ -20,8 +20,12 @@ public class TransactionTable {
 		tableTrans.put("are also LOW", low);
 		tableTrans.put("stable", stable);
 		
+		// cluster 5
+		tableTrans.put("is not permitted", "cluster5");
 		// cluster 3
 		tableTrans.put("remains asserted until", cluster3);
+		tableTrans.put("be greater than", "cluster1");
+
 	}
 	public static String searchTrans(String str) {
 		String s = tableTrans.get(str);

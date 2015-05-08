@@ -31,8 +31,13 @@ public class VerilogMaker {
 				line = "|-> " + "(" + signal1.getRWO().getName() + signal1.getAssignment() + ");";								
 			} else if (signal1.getAssignment().equals("cluster3")) {
 				line = MessageFormat.format("|-> (##1 $stable(<{0}>) [*1:$] ##1 (<{1}> == <{2}>)));", conSignals.get(0).getRWO().getName(
-						), signal1.getRWO().getName(),"value of signal 1");
-			}
+						), signal1.getRWO().getName(),"1");
+			
+			// Used exception X, rewrite it later to pick X out of sentence
+			}	else if (signal1.getAssignment().equals("cluster5")) {
+				line = MessageFormat.format("|-> ({0} != {1}));", conSignals.get(0).getRWO().getName(
+						), "X");
+			}	
 		}
 		// 2 phrases/signals
 		else {
@@ -54,12 +59,17 @@ public class VerilogMaker {
 			str2 = "(" + signal2.getRWO().getName() + signal2.getAssignment() + ")";
 			line = "(" + str1 + " && " + str2 + ")" ;
 			verilog.add(line);
+		} 
+		// cluster 1 exception made
+		else if (signal1.getAssignment().equals("cluster1")) {
+			line = MessageFormat.format("({0} >= {1});", antSignals.get(0).getRWO().getName(),"1");
+			verilog.add(line);
 		}
 		// Ant consists of 1 phrase
 		else {
 			line = str1;
 			verilog.add(line);
-		}
+		} 
 		
 	}
 	

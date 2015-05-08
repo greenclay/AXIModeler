@@ -17,6 +17,7 @@ public class RWOTable {
 		tableInputs.put("AWREADY", new RWO("AWREADY", 1, "boolean", "in"));
 		tableInputs.put("CSYSACK", new RWO("CSYSACK", 1, "boolean", "in"));
 		tableInputs.put("AWCACHE1", new RWO("AWCACHE1", 1, "boolean", "in"));
+		tableInputs.put("AWUSER WIDTH", new RWO("AWUSER WIDTH", 1, "boolean", "in"));
 		
 		// Output table
 		tableOutputs.put("light", new RWO("light", 1, "boolean", "out"));

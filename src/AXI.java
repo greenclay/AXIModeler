@@ -11,6 +11,10 @@ public class AXI {
 	public static void parseAndPrint(Tree tree) {
 
 		AntCon result = checkWhen(tree);
+		if(result == null) {
+			ArrayList<String> treeWords = getTreeWords(tree);
+			result = new AntCon(treeWords, new ArrayList<String>());
+		}
 		checkAnd(result);
 		result.printAnt();
 		result.printCon();
@@ -52,6 +56,24 @@ public class AXI {
 			if(phrase.get(i).equals("remains")) {
 				if(phrase.get(i+1).equals("asserted") && phrase.get(i+2).equals("until")) {
 					phrase.set(i, "remains asserted until");
+				}
+			}
+			// Check for cluster 5
+			if(phrase.get(i).equals("is")) {
+				if(phrase.get(i+1).equals("not") && phrase.get(i+2).equals("permitted")) {
+					phrase.set(i, "is not permitted");
+				}
+			}
+			// Check cluster 1
+			if(phrase.get(i).equals("AWUSER")) {
+				if(phrase.get(i+1).equals("WIDTH")){
+					phrase.set(i, "AWUSER WIDTH");
+				}
+			}
+			// cluster 1
+			if(phrase.get(i).equals("be")) {
+				if(phrase.get(i+1).equals("greater") && phrase.get(i+2).equals("than")){
+					phrase.set(i, "be greater than");
 				}
 			}
 		}
