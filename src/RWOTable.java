@@ -17,7 +17,8 @@ public class RWOTable {
 		tableInputs.put("AWREADY", new RWO("AWREADY", 1, "boolean", "in"));
 		tableInputs.put("CSYSACK", new RWO("CSYSACK", 1, "boolean", "in"));
 		tableInputs.put("AWCACHE1", new RWO("AWCACHE1", 1, "boolean", "in"));
-		tableInputs.put("AWUSER WIDTH", new RWO("AWUSER WIDTH", 1, "boolean", "in"));
+		tableInputs.put("AWUSER_WIDTH", new RWO("AWUSER_WIDTH", 1, "boolean", "in"));
+		tableInputs.put("RVALID", new RWO("RVALID", 1, "boolean", "in"));
 		
 		// Output table
 		tableOutputs.put("light", new RWO("light", 1, "boolean", "out"));
@@ -26,7 +27,7 @@ public class RWOTable {
 		tableOutputs.put("AWID", new RWO("AWID", 1, "boolean", "out"));
 		tableOutputs.put("CSYSREQ", new RWO("CSYSREQ", 1, "boolean", "out"));
 		tableOutputs.put("AWREADY", new RWO("AWREADY", 1, "boolean", "out"));
-
+		tableOutputs.put("RDATA", new RWO("AWREADY", 1, "boolean", "out"));
 	}
 
 	public static RWO searchInput(String str) {

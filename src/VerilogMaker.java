@@ -37,6 +37,9 @@ public class VerilogMaker {
 			}	else if (signal1.getAssignment().equals("cluster5")) {
 				line = MessageFormat.format("|-> ({0} != {1}));", conSignals.get(0).getRWO().getName(
 						), "X");
+			}	else if (signal1.getAssignment().equals("cluster11")) {
+				line = MessageFormat.format(" (({0} == 1) && (##1 {1} == 0)) |->", conSignals.get(0).getRWO().getName(
+						), conSignals.get(0).getRWO().getName());
 			}	
 		}
 		// 2 phrases/signals

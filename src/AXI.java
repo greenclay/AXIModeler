@@ -76,6 +76,13 @@ public class AXI {
 					phrase.set(i, "be greater than");
 				}
 			}
+			
+			// cluster 11) CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH. [4]
+			if(phrase.get(i).equals("change")) {
+				if(phrase.get(i+1).equals("from") && phrase.get(i+2).equals("HIGH") && phrase.get(i+3).equals("to") && phrase.get(i+4).equals("LOW")){
+					phrase.set(i, "change from HIGH to LOW");
+				}
+			}
 		}
 	}
 
