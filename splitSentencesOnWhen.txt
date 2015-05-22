@@ -1,0 +1,13 @@
+AWVALID is HIGH.
+A value of X on AWID is not permitted.
+
+when AWVALID is HIGH.
+AWCACHE1 is LOW. 
+AWCACHE32 are also LOW. 
+
+CSYSACK is HIGH.
+CSYSREQ is only permitted to change from HIGH to LOW.
+
+AWVALID is asserted.
+AWREADY is LOW. 
+AWADDR remains stable.
