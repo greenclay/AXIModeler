@@ -1,4 +1,5 @@
 package AXIModeler;
+
 import java.util.ArrayList;
 
 import edu.stanford.nlp.trees.Tree;
@@ -6,17 +7,17 @@ import edu.stanford.nlp.trees.Tree;
 public class Implication {
 
 	public class Clause {
-		
+
 		public ArrayList<String> words;
 		public Signal signal;
 		public Tree tree;
-		
+
 		public Clause(ArrayList<String> words) {
 			this.words = words;
 			findTree();
-			System.out.println(tree);
+			if (words.size() > 0) System.out.println(tree);
 		}
-		
+
 		public void setSignal(Signal signal) {
 			this.signal = signal;
 		}
@@ -33,24 +34,26 @@ public class Implication {
 			this.words = words;
 			findTree();
 		}
-		
+
 		private void findTree() {
 			String sentence = "";
 			for (String str : words) {
-				if(str.equals(".")) continue;
+				if (str.equals(".")) continue;
+				if (str.equals("when")) continue;
+				if (str.equals("When")) continue;
 				sentence = sentence + " " + str;
 			}
 			sentence = sentence + ".";
-			
-//			if (sentence.equals(".")) sentence = "";
+
+			// if (sentence.equals(".")) sentence = "";
 			tree = Modeler.getTree(sentence);
 		}
-		
+
 		public Tree getTree() {
 			return tree;
 		}
 	}
-	
+
 	public Clause getAnt1() {
 		return ant1;
 	}
@@ -71,7 +74,7 @@ public class Implication {
 	private Clause ant2;
 	private Clause con1;
 	private Clause con2;
-	
+
 	ArrayList<String> antArr1;
 	ArrayList<String> antArr2;
 	ArrayList<Signal> antSignals;
@@ -89,8 +92,7 @@ public class Implication {
 		ant2 = new Clause(new ArrayList<String>());
 		con1 = new Clause(con);
 		con2 = new Clause(new ArrayList<String>());
-		
-		
+
 		// Old Implication constructor
 		this.antArr1 = ant;
 		this.conArr1 = con;
@@ -99,7 +101,7 @@ public class Implication {
 		conSignals = new ArrayList<Signal>();
 		antSignals = new ArrayList<Signal>();
 	}
-	
+
 	public void printSignalsOld() {
 		for (Signal signal : conSignals) {
 			signal.print();
@@ -108,110 +110,111 @@ public class Implication {
 			signal.print();
 		}
 	}
-	
+
 	public void printSignals() {
 		if (ant1.signal != null) ant1.signal.print();
 		if (ant2.signal != null) ant2.signal.print();
-		
+
 		if (con1.signal != null) con1.signal.print();
 		if (con2.signal != null) con2.signal.print();
 	}
-	
+
 	public void makeVerilog() {
-		if (con1.signal != null ) conSignals.add(con1.signal);
-		if (con2.signal != null ) conSignals.add(con2.signal);
-		if (ant1.signal != null ) antSignals.add(ant1.signal);
-		if (ant2.signal != null ) antSignals.add(ant2.signal);
-		
-		if(conSignals.size() > 0 || antSignals.size() > 0) {
-			
+		if (con1.signal != null) conSignals.add(con1.signal);
+		if (con2.signal != null) conSignals.add(con2.signal);
+		if (ant1.signal != null) antSignals.add(ant1.signal);
+		if (ant2.signal != null) antSignals.add(ant2.signal);
+
+		if (conSignals.size() > 0 || antSignals.size() > 0) {
+
 			verilog = new VerilogMaker(antSignals, conSignals);
-			
+
 			for (String str : verilog.getVerliog()) {
 				System.out.println(str);
 			}
 		}
 	}
-	
+
 	public void makeVerilogOld() {
-		if(conSignals.size() > 0 || antSignals.size() > 0) {
+		if (conSignals.size() > 0 || antSignals.size() > 0) {
 			verilog = new VerilogMaker(antSignals, conSignals);
-			
+
 			for (String str : verilog.getVerliog()) {
 				System.out.println(str);
 			}
 		}
 	}
-	
+
 	public void fillSignals() {
 		// make Signals out of the ant/ant2 and con/con2 phrases
 		Signal signal = makeAntSignals(antArr1);
-		if(signal != null) {
+		if (signal != null) {
 			antSignals.add(signal);
 		}
-		
+
 		signal = makeAntSignals(antArr2);
-		if(signal != null) {
+		if (signal != null) {
 			antSignals.add(signal);
 		}
-		
+
 		signal = makeConSignals(conArr1);
-		if(signal != null) {
+		if (signal != null) {
 			conSignals.add(signal);
 		}
-		
+
 		signal = makeConSignals(conArr2);
-		if(signal != null) {
+		if (signal != null) {
 			conSignals.add(signal);
 		}
 	}
-	
+
 	public Signal makeAntSignals(ArrayList<String> phrase) {
-		
+
 		Signal signal = null;
-//		System.out.println(phrase);
-		
+		// System.out.println(phrase);
+
 		// Look for an RWO in the table that matches the phrase
 		for (String str : phrase) {
 			RWO rwo = RWOTable.searchInput(str);
-//			System.out.println(str + " " + rwo);
-			
+			// System.out.println(str + " " + rwo);
+
 			// If matching rwo was found in the rwotable
 			if (rwo != null) {
 				for (String str2 : phrase) {
 					String assignment = TransactionTable.searchTrans(str2);
-//					System.out.println(str2 + " " + assignment);
-						if (assignment != null) {
-							signal = new Signal(rwo, str2, assignment);
-							break;
-						}
+					// System.out.println(str2 + " " + assignment);
+					if (assignment != null) {
+						signal = new Signal(rwo, str2, assignment);
+						break;
+					}
 				}
 			}
-		}		
+		}
 		return signal;
 	}
 
 	public Signal makeConSignals(ArrayList<String> phrase) {
 		Signal signal = null;
-//		System.out.println(phrase);
+		// System.out.println(phrase);
 		// Look for an RWO in the table that matches the phrase
 
 		for (String str : phrase) {
 			RWO rwo = RWOTable.searchOutput(str);
-//			System.out.println(str + " " + rwo);
+			// System.out.println(str + " " + rwo);
 			if (rwo != null) {
 				for (String str2 : phrase) {
 					String assignment = TransactionTable.searchTrans(str2);
-//					System.out.println(str2 + " " + assignment);
-						if (assignment != null) {
-							signal = new Signal(rwo, str2, assignment);
-							break;
-						}
+					// System.out.println(str2 + " " + assignment);
+					if (assignment != null) {
+						signal = new Signal(rwo, str2, assignment);
+						break;
+					}
 				}
 			}
-		}		
+		}
 		return signal;
 	}
+
 	public void searchRWOTable() {
 		// Search ant
 		for (String str : antArr1) {
@@ -314,7 +317,7 @@ public class Implication {
 			System.out.println(str2);
 		}
 	}
-	
+
 	public void printImplication() {
 		System.out.println("-- Antecedent --");
 		String str = "";
@@ -323,7 +326,7 @@ public class Implication {
 		}
 		System.out.println(str);
 		System.out.println(ant1.getTree());
-		
+
 		if (ant2.words.size() > 0) {
 			str = "";
 			for (String s : ant2.words) {
@@ -332,7 +335,7 @@ public class Implication {
 			System.out.println(str);
 			System.out.println(ant2.getTree());
 		}
-		
+
 		System.out.println("-- Consequent --");
 		str = "";
 		for (String s : con1.words) {
@@ -348,5 +351,5 @@ public class Implication {
 			System.out.println(str);
 		}
 	}
-	
+
 }

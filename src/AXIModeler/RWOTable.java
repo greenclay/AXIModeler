@@ -20,7 +20,7 @@ public class RWOTable {
 		tableInputs.put("AWCACHE1", new RWO("AWCACHE1", 1, "boolean", "in"));
 		tableInputs.put("AWUSER_WIDTH", new RWO("AWUSER_WIDTH", 1, "boolean", "in"));
 		tableInputs.put("RVALID", new RWO("RVALID", 1, "boolean", "in"));
-		
+
 		// Output table
 		tableOutputs.put("light", new RWO("light", 1, "boolean", "out"));
 		tableOutputs.put("AWADDR", new RWO("AWADDR", 1, "boolean", "out"));

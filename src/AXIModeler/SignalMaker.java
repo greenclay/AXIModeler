@@ -34,12 +34,28 @@ public class SignalMaker {
 			signal = new Signal(rwo, verb, assignment);	
 			clause.setSignal(signal);
 		}
-//		if(signal.isFullSignal()) clause.setSignal(signal);
+		if (rwo != null && rwo.getName().equals("AWVALID")) {
+			System.err.println(verb);
+		}
 	}
 	
 	private void findVerb() {
 		findIsHigh();
 		findIsLow();
+		findIsAsserted();
+		findRemainsStable();
+		findIsNotPermitted();
+		findRemainsAsserted();
+	}
+	
+	private void findRemainsAsserted() {
+		// Matches "remains asserted" of "it remains asserted until AWREADY is HIGH"
+		// Cluster 3 When AWVALID is asserted then it remains asserted until AWREADY is HIGH.
+
+		if(AXI.doesTreeMatchPattern(tree, "(VBZ < remains) .. (VBD < asserted)")) {
+			verb = "remains asserted";
+			return;
+		}
 	}
 	
 	private void findIsHigh() {
@@ -52,6 +68,46 @@ public class SignalMaker {
 			String matchYield = AXI.getTreeMatchPatternYield(tree, "ADJP $ (VBZ < is)");
 			if(matchYield.equals("HIGH")) {
 				verb = "is HIGH";
+				return;
+			}
+		}
+	}
+	
+	private void findIsNotPermitted() {
+		// Matches the "is asserted" of these sentences
+		// cluster5 A value of X on RDATA valid byte lanes is not permitted when RVALID is HIGH.
+		if(AXI.doesTreeMatchPattern(tree, "VP $ ((RB < not) $ (VBZ < is))")) {
+			String matchYield = AXI.getTreeMatchPatternYield(tree, "VP $ ((RB < not) $ (VBZ < is))");
+			if(matchYield.equals("permitted")) {
+				verb = "is not permitted";
+				return;
+			}
+		}
+	}
+	
+	private void findIsAsserted() {
+		// Matches the "is asserted" of these sentences
+		// AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
+		if(AXI.doesTreeMatchPattern(tree, "(VP << asserted) $ (VBZ < is)")) {
+			verb = "asserted";
+			return;
+		}
+//		if(AXI.doesTreeMatchPattern(tree, "VP $ (VBZ < is)")) {
+//			String matchYield = AXI.getTreeMatchPatternYield(tree, "VP $ (VBZ < is)");
+//			if(matchYield.equals("asserted")) {
+//				verb = "asserted";
+//				return;
+//			}
+//		}
+	}
+	
+	private void findRemainsStable() {
+		// Matches the "remains stable" of these sentences
+		// AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
+		if(AXI.doesTreeMatchPattern(tree, "ADJP $ (VBZ < remains)")) {
+			String matchYield = AXI.getTreeMatchPatternYield(tree, "ADJP $ (VBZ < remains)");
+			if(matchYield.equals("stable")) {
+				verb = "stable";
 				return;
 			}
 		}

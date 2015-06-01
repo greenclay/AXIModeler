@@ -62,7 +62,7 @@ public class Modeler {
 
 			System.err.println("SENTENCE - "
 					+ gottenSentence.getSentenceString());
-//			System.out.println(gottenSentence.kBest.get(0).object());
+			System.out.println(gottenSentence.kBest.get(0).object());
 			Tree tree = gottenSentence.kBest.get(0).object();
 			// /////////////////////////////////////// FOPC PARSER SPECIAL
 			// CLASS:
