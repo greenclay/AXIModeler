@@ -1,6 +1,7 @@
 package AXIModeler;
 import java.util.ArrayList;
 
+import edu.stanford.nlp.io.EncodingPrintWriter.err;
 import edu.stanford.nlp.ling.Label;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.tregex.TregexMatcher;
@@ -9,10 +10,10 @@ import edu.stanford.nlp.trees.tregex.TregexPattern;
 public class AXI {
 
 	public static String treeMatchPatternYield;
-	
+	private static int clusterNumber = 0;
 	// Check for Cons when Ante
 	public static void parseAndPrint(Tree tree) {
-
+		
 		Implication imp = checkWhen(tree);
 		if(imp == null) {
 			System.out.println("is null");
@@ -131,6 +132,27 @@ public class AXI {
 		ArrayList<String> antArr = new ArrayList<String>();
 		ArrayList<String> conArr = new ArrayList<String>();
 
+		if (doesTreeMatchPattern(tree, "SBAR << after")) {
+			ArrayList<String> treeWords = getTreeWords(tree);
+			int newLine = 0;
+			for (int i = 0; i < treeWords.size(); i++) {
+				String str = treeWords.get(i);
+
+				if (str.toLowerCase().equals("after")) {
+					newLine = i + 1;
+					break;
+				}
+				conArr.add(str);
+			}
+
+			for (int i = newLine; i < treeWords.size(); i++) {
+				String str = treeWords.get(i);
+				antArr.add(str);
+			}
+
+			antCon = new Implication(antArr, conArr);
+			return antCon;
+		}
 		if (doesTreeMatchPattern(tree, "SBAR << (WRB << when)")
 				|| doesTreeMatchPattern(tree, "SBAR << (WRB << When)")) {
 			if (doesTreeMatchPattern(tree, "SBAR << (RB << then)")
@@ -221,7 +243,6 @@ public class AXI {
 		for (Label label : treeYield) {
 			treeWords.add(label.toString());
 		}
-
 		return treeWords;
 	}
 

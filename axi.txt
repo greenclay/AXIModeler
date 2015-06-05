@@ -10,10 +10,26 @@ when AWVALID is asserted then it remains asserted until AWREADY is HIGH.
 # when AWVALID is HIGH and AWCACHE[1] is LOW then AWCACHE[3:2] are also LOW.
 
 # cluster 4
+# assert property(@(posedge clock) RESET != 1 |-> ( <signal1> != <value>));
+A value of X on AWVALID is not permitted when not in reset.
+
+# cluster 5
 A value of X on AWID is not permitted when AWVALID is HIGH.
+
+# cluster 6
+AWVALID is LOW for the first cycle after ARESETn goes HIGH.
 
 # cluster 7
 when AWVALID is HIGH and AWCACHE1 is LOW then AWCACHE32 are also LOW.
+
+# cluster 8
+AWID must remain stable when AWVALID is asserted and AWREADY is LOW.
+
+# cluster 9	
+When ARVALID is HIGH, if ARCACHE1 is LOW vthen ARCACHE32 must also be LOW.
+
+# cluster 10
+Recommended that AWREADY is asserted within MAXWAITS cycles of AWVALID being asserted.
 
 # cluster 11
 CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH.

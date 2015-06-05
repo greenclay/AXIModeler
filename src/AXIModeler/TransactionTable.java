@@ -22,12 +22,18 @@ public class TransactionTable {
 
 		tableTrans.put("are also LOW", low);
 		tableTrans.put("stable", stable);
+		// cluster 3
+		tableTrans.put("remains asserted", "cluster3");
+		
+		// cluster 4
+		tableTrans.put("not in reset", "cluster4");
+		
 		
 		// cluster 5
 		tableTrans.put("is not permitted", "cluster5");
 		
-		// cluster 3
-		tableTrans.put("remains asserted", "cluster3");
+		// cluster 6
+		tableTrans.put("goes HIGH", high);
 		
 		
 		tableTrans.put("be greater than", "cluster1");

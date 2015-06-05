@@ -46,6 +46,9 @@ public class SignalMaker {
 		findRemainsStable();
 		findIsNotPermitted();
 		findRemainsAsserted();
+		findNotInReset(); // cluster 4
+		findChangeFromHighToLow(); // cluster 11
+		findGoesHigh(); // cluster 6
 	}
 	
 	private void findRemainsAsserted() {
@@ -73,6 +76,15 @@ public class SignalMaker {
 		}
 	}
 	
+	// cluster 6
+	// goes HIGH
+	private void findGoesHigh() {
+		if(AXI.doesTreeMatchPattern(tree, "(VBZ < goes) $ (NP << HIGH)")) {
+			verb = "goes HIGH";
+			return;
+		}
+	}
+	
 	private void findIsNotPermitted() {
 		// Matches the "is asserted" of these sentences
 		// cluster5 A value of X on RDATA valid byte lanes is not permitted when RVALID is HIGH.
@@ -82,6 +94,15 @@ public class SignalMaker {
 				verb = "is not permitted";
 				return;
 			}
+		}
+	}
+	
+	// cluster 4 SENTENCE - A value of X on AWVALID is not permitted when not in reset.
+	// "not in reset"
+	private void findNotInReset() {
+		if(AXI.doesTreeMatchPattern(tree, "(RB < not) .. (NP << reset)")) {
+			verb = "not in reset";
+			return;
 		}
 	}
 	
@@ -100,6 +121,7 @@ public class SignalMaker {
 //			}
 //		}
 	}
+	
 	
 	private void findRemainsStable() {
 		// Matches the "remains stable" of these sentences
@@ -137,6 +159,14 @@ public class SignalMaker {
 		
 	}
 	
+	// Cluster 11
+	// SENTENCE - CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH.
+	// Parses " change from HIGH to LOW"
+	private void findChangeFromHighToLow() {
+		if(AXI.doesTreeMatchPattern(tree, "(VB < change) .. (NP << HIGH) .. (NP << LOW)")) {
+			verb = "change from HIGH to LOW";
+		}
+	}
 	private RWO findRWO() {
 		for (String str : words) {
 			RWO rwo = RWOTable.searchInput(str);

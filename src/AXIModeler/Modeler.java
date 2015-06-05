@@ -1,4 +1,5 @@
 package AXIModeler;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,17 +20,16 @@ public class Modeler {
 	private static ArrayList<InputOutput> ioList;
 	private static LexicalizedParserQuery lpq;
 	private static TreebankLanguagePack tlp;
-	
+
 	public static void main(String[] args) {
-		LexicalizedParser lp = LexicalizedParser
-				.loadModel("lib/englishPCFG.ser.gz");
+		LexicalizedParser lp = LexicalizedParser.loadModel("lib/englishPCFG.ser.gz");
 
 		ioList = new ArrayList<InputOutput>();
 		RWOTable.init();
 		sentenceList = new ArrayList<Sentence>();
-		readFile("axi.txt");
+		
+		readFile("axi.txt"); // THE INPUT FILE
 		parseSentences(lp);
-
 
 	}
 
@@ -46,31 +46,26 @@ public class Modeler {
 		for (int i = 0; i < sentenceList.size(); i++) {
 			gottenSentence = sentenceList.get(i);
 
-			// If the sentence starts with "#" then ignore it as it is a comment
-			if (gottenSentence.getSentenceString().startsWith("#")) {
-				continue;
-			}
 
-			toke = tlp.getTokenizerFactory().getTokenizer(
-					new StringReader(gottenSentence.sent));
+			toke = tlp.getTokenizerFactory().getTokenizer(new StringReader(gottenSentence.sent));
 			sent = toke.tokenize();
 			lpq.parse(sent);
 			gottenSentence.kBest = lpq.getKBestPCFGParses(numOfParses);
 			gottenSentence.numParses = numOfParses;
 
 			int kBestNum = 0;
-
-			System.err.println("SENTENCE - "
-					+ gottenSentence.getSentenceString());
+			System.err.println("CLUSTER " + (i+1));
+			
+			System.err.println("SENTENCE - " + gottenSentence.getSentenceString());
 			System.out.println(gottenSentence.kBest.get(0).object());
 			Tree tree = gottenSentence.kBest.get(0).object();
 			// /////////////////////////////////////// FOPC PARSER SPECIAL
 			// CLASS:
-//			InputOutput io = ModelParser.parse(gottenSentence.kBest.get(0),
-//					gottenSentence);
-//			if (io != null) {
-//				ioList.add(io);
-//			}
+			// InputOutput io = ModelParser.parse(gottenSentence.kBest.get(0),
+			// gottenSentence);
+			// if (io != null) {
+			// ioList.add(io);
+			// }
 
 			// Start AXI Parsing
 			RWOTable.init();
@@ -87,13 +82,19 @@ public class Modeler {
 		Tree tree = lpq.getKBestPCFGParses(1).get(0).object();
 		return tree;
 	}
-	
+
 	private static void readFile(String s) {
 		int n = 1;
 		try (BufferedReader br = new BufferedReader(new FileReader(s))) {
 			String line = br.readLine();
-			while (line != null) {
+			while ((line = br.readLine()) != null) {
+				
+				// If the sentence starts with "#" then ignore it as it is a comment
+				if (line.startsWith("#")) {
+					continue;
+				}
 
+				
 				if (!line.equals("")) {
 					sentenceList.add(new Sentence(line, n));
 					n++;
