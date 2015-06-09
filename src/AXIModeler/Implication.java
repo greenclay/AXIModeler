@@ -132,10 +132,10 @@ public class Implication {
 
 			verilog = new VerilogMaker(antSignals, conSignals);
 
-			for (String str : verilog.getVerliog()) {
-				System.out.println(str);
-				log.warning(str);
-			}
+//			for (String str : verilog.getVerliog()) {
+//				System.out.println(str);
+//				log.warning(str);
+//			}
 		}
 	}
 

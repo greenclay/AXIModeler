@@ -41,6 +41,7 @@ public class AXI {
 //	
 //		imp.makeVerilogOld();
 		imp.makeVerilog();
+		OutputWriter.printVerilog(imp);
 		// result.makeSignals(phrase)
 		// result.searchRWOTable();
 		// result.searchTransactionTable();

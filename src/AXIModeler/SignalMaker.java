@@ -34,9 +34,6 @@ public class SignalMaker {
 			signal = new Signal(rwo, verb, assignment);	
 			clause.setSignal(signal);
 		}
-		if (rwo != null && rwo.getName().equals("AWVALID")) {
-			System.err.println(verb);
-		}
 	}
 	
 	private void findVerb() {
@@ -46,9 +43,20 @@ public class SignalMaker {
 		findRemainsStable();
 		findIsNotPermitted();
 		findRemainsAsserted();
+		findGreaterThanOrEqualOne(); // cluster 1
 		findNotInReset(); // cluster 4
 		findChangeFromHighToLow(); // cluster 11
 		findGoesHigh(); // cluster 6
+	}
+
+	private void findGreaterThanOrEqualOne() {
+		// Cluster 1 
+		// Matches "be greater than or equal to one" of "Parameter AWUSER_WIDTH must be greater than or equal to one . "
+
+		if(AXI.doesTreeMatchPattern(tree, "(VB < be) .. (ADJP << greater) .. (ADJP << than) .. (ADJP << equal) .. (TO << to) .. (NP << one)")) {
+			verb = "be greater than or equal to one";
+			return;
+		}
 	}
 	
 	private void findRemainsAsserted() {

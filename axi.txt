@@ -1,5 +1,5 @@
 # cluster 1 
-Parameter AWUSER_WIDTH must be greater than or equal to 1.
+Parameter AWUSER_WIDTH must be greater than or equal to one.
 AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
 
 # cluster 2 assert property(@(posedge clock) (<signal2> == <value2>) |-> (<signal1> != <value1>));

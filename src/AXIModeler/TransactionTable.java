@@ -1,3 +1,4 @@
+
 package AXIModeler;
 import java.util.HashMap;
 
@@ -21,6 +22,8 @@ public class TransactionTable {
 		tableTrans.put("is HIGH", high);
 
 		tableTrans.put("are also LOW", low);
+		tableTrans.put("be greater than or equal to one", "cluster1");
+
 		tableTrans.put("stable", stable);
 		// cluster 3
 		tableTrans.put("remains asserted", "cluster3");
