@@ -26,7 +26,7 @@ when AWVALID is HIGH and AWCACHE1 is LOW then AWCACHE32 are also LOW.
 AWID must remain stable when AWVALID is asserted and AWREADY is LOW.
 
 # cluster 9	
-When ARVALID is HIGH, if ARCACHE1 is LOW vthen ARCACHE32 must also be LOW.
+When ARVALID is HIGH, if ARCACHE1 is LOW then ARCACHE32 must also be LOW.
 
 # cluster 10
 Recommended that AWREADY is asserted within MAXWAITS cycles of AWVALID being asserted.

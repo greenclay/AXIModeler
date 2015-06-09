@@ -37,7 +37,7 @@ public class TransactionTable {
 		
 		// cluster 6
 		tableTrans.put("goes HIGH", high);
-		
+		tableTrans.put("is LOW for the first cycle", "cluster6");
 		
 		tableTrans.put("be greater than", "cluster1");
 		

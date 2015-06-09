@@ -16,7 +16,7 @@ public class Implication {
 		public Clause(ArrayList<String> words) {
 			this.words = words;
 			findTree();
-			if (words.size() > 0) System.out.println(tree);
+//			if (words.size() > 0) System.out.println(tree);
 		}
 
 		public void setSignal(Signal signal) {
@@ -87,7 +87,9 @@ public class Implication {
 	ArrayList<String> conArr2;
 	ArrayList<Signal> conSignals;
 	VerilogMaker verilog;
-
+	
+	private boolean doubleImplication = false;
+	
 	public Implication(ArrayList<String> ant, ArrayList<String> con) {
 
 		// Fresh and new Clause constructor
@@ -224,11 +226,11 @@ public class Implication {
 		for (String str : antArr1) {
 			RWO rwo = RWOTable.searchInput(str);
 			if (rwo != null) {
-				rwo.print();
+//				rwo.print();
 			}
 			rwo = RWOTable.searchOutput(str);
 			if (rwo != null) {
-				rwo.print();
+//				rwo.print();
 			}
 		}
 
@@ -236,11 +238,11 @@ public class Implication {
 		for (String str : conArr1) {
 			RWO rwo = RWOTable.searchInput(str);
 			if (rwo != null) {
-				rwo.print();
+//				rwo.print();
 			}
 			rwo = RWOTable.searchOutput(str);
 			if (rwo != null) {
-				rwo.print();
+//				rwo.print();
 			}
 		}
 	}
@@ -263,6 +265,10 @@ public class Implication {
 		}
 	}
 
+	public void setDoubleImplifcation() {
+		doubleImplication = true;
+	}
+	
 	public void setAntArr(ArrayList<String> ant) {
 		this.antArr1 = ant;
 	}
@@ -346,13 +352,15 @@ public class Implication {
 			str = str + s + " ";
 		}
 		System.out.println(str);
-
-		if (antArr2.size() > 0) {
+		System.out.println(con1.getTree());
+		
+		if (con2.words.size() > 0) {
 			str = "";
 			for (String s : con2.words) {
 				str = str + s + " ";
 			}
 			System.out.println(str);
+			System.out.println(con2.getTree());
 		}
 	}
 

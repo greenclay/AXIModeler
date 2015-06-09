@@ -20,14 +20,14 @@ public class VerilogMaker {
 		if (conSignals.size() > 0) conVerilog();
 	}
 
+	// Make System Verilog for the consequent clauses
 	private void conVerilog() {
 		boolean switchConAnt = false; // If true switch the order of the antecdent and consequent verilog
 		Signal signal1 = conSignals.get(0);
 		String line = null;
 
+		// Only 1 clause for the consequent
 		if (conSignals.size() == 1) {
-
-			// if
 			if (signal1.getAssignment().equals("$stable")) {
 				line = "|-> " + signal1.getAssignment() + "(" + signal1.getRWO().getName() + ");";
 			} else if (signal1.getAssignment().equals(" == 1") || signal1.getAssignment().equals(" == 0")) {
@@ -45,13 +45,19 @@ public class VerilogMaker {
 				
 				// Switch the placement of lines of the consequent and antecedent in the verilog since this is a special case.
 				switchConAnt = true;
+			} else if (signal1.getAssignment().equals("cluster6")) {
+				line = "(({0} == {1}) ##1({2} == {3})));";
+				line = MessageFormat.format(line, signal1.getRWO().getName(), "0", signal1.getRWO().getName(), "0");
 			}
 		}
 		
-		// 2 phrases/signals
+		// 2 clauses for the consequent
 		else {
 			Signal signal2 = conSignals.get(1);
-			line = "";
+			if(signal1.getRWO().getName().equals("ARCACHE1") && signal2.getRWO().getName().equals("ARCACHE32")) {
+				line = "|-> ((%s %s) |-> (%s %s)))";
+				line = String.format(line, signal1.getRWO().getName(), signal1.getAssignment(), signal2.getRWO().getName(), signal2.getAssignment());
+			}
 		}
 
 		if (switchConAnt == true) {
@@ -63,7 +69,8 @@ public class VerilogMaker {
 			verilog.add(line);
 		}
 	}
-
+	
+	// Make System Verilog for the antecedent statements
 	private void antVerilog(ArrayList<Signal> antSignals) {
 		Signal signal1 = antSignals.get(0);
 		String str1 = "(" + signal1.getRWO().getName() + signal1.getAssignment() + ")";
@@ -77,7 +84,7 @@ public class VerilogMaker {
 		}
 		// cluster 1 exception made
 		else if (signal1.getAssignment().equals("cluster1")) {
-			line = MessageFormat.format("({0} >= {1});", antSignals.get(0).getRWO().getName(), "1");
+			line = MessageFormat.format("({0} >= {1}));", antSignals.get(0).getRWO().getName(), "1");
 		} else if(signal1.getAssignment().equals("cluster4")) {
 			line = "RESET != 1";
 		}

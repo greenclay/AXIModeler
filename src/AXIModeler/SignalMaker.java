@@ -40,7 +40,7 @@ public class SignalMaker {
 		findIsHigh();
 		findIsLow();
 		findIsAsserted();
-		findRemainsStable();
+		findRemainsStable(); // cluster 8
 		findIsNotPermitted();
 		findRemainsAsserted();
 		findGreaterThanOrEqualOne(); // cluster 1
@@ -84,6 +84,15 @@ public class SignalMaker {
 		}
 	}
 	
+	// cluster 4 SENTENCE - A value of X on AWVALID is not permitted when not in reset.
+	// "not in reset"
+	private void findNotInReset() {
+		if(AXI.doesTreeMatchPattern(tree, "(RB < not) .. (NP << reset)")) {
+			verb = "not in reset";
+			return;
+		}
+	}
+
 	// cluster 6
 	// goes HIGH
 	private void findGoesHigh() {
@@ -105,14 +114,6 @@ public class SignalMaker {
 		}
 	}
 	
-	// cluster 4 SENTENCE - A value of X on AWVALID is not permitted when not in reset.
-	// "not in reset"
-	private void findNotInReset() {
-		if(AXI.doesTreeMatchPattern(tree, "(RB < not) .. (NP << reset)")) {
-			verb = "not in reset";
-			return;
-		}
-	}
 	
 	private void findIsAsserted() {
 		// Matches the "is asserted" of these sentences
@@ -130,16 +131,27 @@ public class SignalMaker {
 //		}
 	}
 	
-	
 	private void findRemainsStable() {
 		// Matches the "remains stable" of these sentences
 		// AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
+		// AWID must remain stable when AWVALID is asserted and AWREADY is LOW. cluster 8
 		if(AXI.doesTreeMatchPattern(tree, "ADJP $ (VBZ < remains)")) {
 			String matchYield = AXI.getTreeMatchPatternYield(tree, "ADJP $ (VBZ < remains)");
 			if(matchYield.equals("stable")) {
 				verb = "stable";
 				return;
 			}
+		} else if (AXI.doesTreeMatchPattern(tree, "(ADJP << stable) $ (VB < remain)")) {
+			verb = "stable";
+			return;
+		}
+	}
+
+	private void isLowFirstCycle() {
+		String pattern = "ADVP $ (VBZ < is) .. (NP << first) .. (NP << cycle)";
+		if(AXI.doesTreeMatchPattern(tree, pattern)) {
+			verb = "is LOW for the first cycle";
+			return;
 		}
 	}
 	
@@ -152,6 +164,8 @@ public class SignalMaker {
 			String matchYield = AXI.getTreeMatchPatternYield(tree, pattern);
 			if(matchYield.equals("LOW")) {
 				verb = "is LOW";
+				isLowFirstCycle(); // exception for "AWVALID is LOW for the first cycle after ARESETn goes HIGH." 
+									// checks for "for the first cycle"
 				return;
 			}
 		}
@@ -165,6 +179,11 @@ public class SignalMaker {
 			}
 		}
 		
+		pattern = "(ADVP << LOW) $ (VB < be)";
+		if(AXI.doesTreeMatchPattern(tree, pattern)) {
+			verb = "is LOW";
+			return;
+		}
 	}
 	
 	// Cluster 11

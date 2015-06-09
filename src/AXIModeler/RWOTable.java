@@ -22,15 +22,18 @@ public class RWOTable {
 		tableInputs.put("RVALID", new RWO("RVALID", 1, "boolean", "in"));
 		tableInputs.put("reset", new RWO("reset", 1, "boolean", "in"));
 		tableInputs.put("ARESETn", new RWO("ARESETn", 1, "boolean", "in"));
-		
+		tableInputs.put("ARVALID", new RWO("ARVALID", 1, "boolean", "in"));
+		tableInputs.put("ARCACHE1", new RWO("ARCACHE1", 1, "boolean", "in"));
+
 		// Output table
 		tableOutputs.put("light", new RWO("light", 1, "boolean", "out"));
 		tableOutputs.put("AWADDR", new RWO("AWADDR", 1, "boolean", "out"));
 		tableOutputs.put("AWCACHE32", new RWO("AWCACHE32", 1, "boolean", "out"));
+		tableOutputs.put("ARCACHE32", new RWO("ARCACHE32", 1, "boolean", "out"));
 		tableOutputs.put("AWID", new RWO("AWID", 1, "boolean", "out"));
 		tableOutputs.put("CSYSREQ", new RWO("CSYSREQ", 1, "boolean", "out"));
 		tableOutputs.put("AWREADY", new RWO("AWREADY", 1, "boolean", "out"));
-		tableOutputs.put("RDATA", new RWO("AWREADY", 1, "boolean", "out"));
+		tableOutputs.put("RDATA", new RWO("RDATA", 1, "boolean", "out"));
 	}
 
 	public static RWO searchInput(String str) {

@@ -22,6 +22,8 @@ public class Modeler {
 	private static TreebankLanguagePack tlp;
 
 	public static void main(String[] args) {
+		long startTime = System.nanoTime();
+
 		LexicalizedParser lp = LexicalizedParser.loadModel("lib/englishPCFG.ser.gz");
 
 		ioList = new ArrayList<InputOutput>();
@@ -30,6 +32,11 @@ public class Modeler {
 		
 		readFile("axi.txt"); // THE INPUT FILE
 		parseSentences(lp);
+		
+		long endTime = System.nanoTime();
+
+		double duration = (endTime - startTime) / (double) 1000000000;  //divide by 1000000 to get milliseconds.
+		System.err.println("Execution took : " + duration + " seconds");
 
 	}
 
