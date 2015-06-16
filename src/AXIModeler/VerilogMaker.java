@@ -18,8 +18,16 @@ public class VerilogMaker {
 		if (antSignals.size() > 0) antVerilog(antSignals);
 		else System.out.println(antSignals.size());
 		if (conSignals.size() > 0) conVerilog();
+		addClosingParenthesis();
+		
 	}
 
+	private void addClosingParenthesis() {
+		String lastLine = verilog.get(verilog.size() - 1);
+		lastLine = lastLine + ");";
+		verilog.set(verilog.size()-1, lastLine);
+	}
+	
 	// Make System Verilog for the consequent clauses
 	private void conVerilog() {
 		boolean switchConAnt = false; // If true switch the order of the antecdent and consequent verilog
@@ -29,25 +37,28 @@ public class VerilogMaker {
 		// Only 1 clause for the consequent
 		if (conSignals.size() == 1) {
 			if (signal1.getAssignment().equals("$stable")) {
-				line = "|-> " + signal1.getAssignment() + "(" + signal1.getRWO().getName() + ");";
+				line = "|-> " + signal1.getAssignment() + "(" + signal1.getRWO().getName() + ")";
 			} else if (signal1.getAssignment().equals(" == 1") || signal1.getAssignment().equals(" == 0")) {
-				line = "|-> " + "(" + signal1.getRWO().getName() + signal1.getAssignment() + ");";
+				line = "|-> " + "(" + signal1.getRWO().getName() + signal1.getAssignment() + ")";
 			} else if (signal1.getAssignment().
 					equals("cluster3")) {
-				line = MessageFormat.format("|-> (##1 $stable(<{0}>) [*1:$] ##1 (<{1}> == <{2}>)));", conSignals.get(0).getRWO().getName(), signal1.getRWO().getName(), "1");
+				line = MessageFormat.format("|-> (##1 $stable(<{0}>) [*1:$] ##1 (<{1}> == <{2}>))", conSignals.get(0).getRWO().getName(), signal1.getRWO().getName(), "1");
 
 				// Used exception X, rewrite it later to pick X out of sentence
 			} 
 			else if (signal1.getAssignment().equals("cluster5")) {
-				line = MessageFormat.format("|-> ({0} != {1}));", conSignals.get(0).getRWO().getName(), "X");
+				line = MessageFormat.format("|-> ({0} != {1})", conSignals.get(0).getRWO().getName(), "X");
 			} else if (signal1.getAssignment().equals("cluster11")) {
 				line = MessageFormat.format("(({0} == 1) && (##1 {1} == 0))", conSignals.get(0).getRWO().getName(), conSignals.get(0).getRWO().getName());
 				
 				// Switch the placement of lines of the consequent and antecedent in the verilog since this is a special case.
 				switchConAnt = true;
 			} else if (signal1.getAssignment().equals("cluster6")) {
-				line = "(({0} == {1}) ##1({2} == {3})));";
+				line = "(({0} == {1}) ##1({2} == {3}))";
 				line = MessageFormat.format(line, signal1.getRWO().getName(), "0", signal1.getRWO().getName(), "0");
+			} else if (signal1.getAssignment().equals("cluster10")) {
+				line = "|-> ##[1:<parameter1>]({0} == {1})";
+				line = MessageFormat.format(line, "MAXWAITS", signal1.getRWO().getName());
 			}
 		}
 		
@@ -55,7 +66,7 @@ public class VerilogMaker {
 		else {
 			Signal signal2 = conSignals.get(1);
 			if(signal1.getRWO().getName().equals("ARCACHE1") && signal2.getRWO().getName().equals("ARCACHE32")) {
-				line = "|-> ((%s %s) |-> (%s %s)))";
+				line = "|-> ((%s %s) |-> (%s %s))";
 				line = String.format(line, signal1.getRWO().getName(), signal1.getAssignment(), signal2.getRWO().getName(), signal2.getAssignment());
 			}
 		}
@@ -84,7 +95,7 @@ public class VerilogMaker {
 		}
 		// cluster 1 exception made
 		else if (signal1.getAssignment().equals("cluster1")) {
-			line = MessageFormat.format("({0} >= {1}));", antSignals.get(0).getRWO().getName(), "1");
+			line = MessageFormat.format("({0} >= {1})", antSignals.get(0).getRWO().getName(), "1");
 		} else if(signal1.getAssignment().equals("cluster4")) {
 			line = "RESET != 1";
 		}

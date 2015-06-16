@@ -1,0 +1,46 @@
+(ROOT (S (NP (NNP CSYSREQ)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (NP (NNP HIGH))) (S (VP (TO to) (VP (VB LOW) (SBAR (WHADVP (WRB when)) (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH))))))))))))) (. .)))
+(ROOT (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+(ROOT (S (NP (NNP CSYSREQ)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (NP (NNP HIGH))) (PP (TO to) (NP (NNP LOW)))))))) (. .)))
+-- Antecedent --
+CSYSACK is HIGH . 
+(ROOT (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset))))))) (. .)))
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+-- Antecedent --
+not in reset . 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle))) (SBAR (IN after) (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH)))))) (. .)))
+is null
+
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle))) (SBAR (IN after) (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH)))))) (. .)))
+(ROOT (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH))) (. .)))
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle)))) (. .)))
+-- Antecedent --
+ARESETn goes HIGH . 
+(ROOT (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH))) (. .)))
+
+(ROOT (S (SBAR (WHADVP (WRB When)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)) (, ,) (SBAR (IN if) (S (NP (NNP ARCACHE1)) (VP (VBZ is) (ADVP (RB LOW)) (ADJP (JJ vthen)))))))) (NP (NNP ARCACHE32)) (VP (MD must) (ADVP (RB also)) (VP (VB be) (ADVP (RB LOW)))) (. .)))
+
+
+-- Antecedent --
+When ARVALID is HIGH , 
+(ROOT (S (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (, ,)) (. .)))
+-- Consequent --
+ARCACHE1 is LOW 
+(ROOT (S (NP (NNP ARCACHE1)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+ARCACHE32 must also be LOW . 
+(ROOT (S (NP (NNP ARCACHE32)) (VP (MD must) (ADVP (RB also)) (VP (VB be) (ADVP (RB LOW)))) (. .)))
+
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle)))) (. .)))
+
+(ROOT (S (VP (VB Recommended) (SBAR (IN that) (S (NP (NNP AWREADY)) (VP (VBZ is) (VP (VBN asserted) (PP (IN within) (NP (NP (NNP MAXWAITS) (NNS cycles)) (PP (IN of) (NP (NP (NNP AWVALID)) (VP (VBG being) (VP (VBN asserted)))))))))))) (. .)))
+
+-- Antecedent --
+AWVALID being asserted . 
+(ROOT (NP (NP (NNP AWVALID)) (VP (VBG being) (VP (VBN asserted))) (. .)))
+-- Consequent --
+Recommended that AWREADY is asserted within MAXWAITS cycles 
+(ROOT (S (VP (VB Recommended) (SBAR (IN that) (S (NP (NNP AWREADY)) (VP (VBZ is) (VP (VBN asserted) (PP (IN within) (NP (NNP MAXWAITS) (NNS cycles)))))))) (. .)))

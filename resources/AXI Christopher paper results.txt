@@ -1,0 +1,91 @@
+S1 AWID must remain stable when AWVALID is asserted
+and AWREADY is LOW.
+
+T1 
+
+assert property (@(posedge clock)
+((AWVALID == 1) && (AWREADY == 0))
+|-> $stable(AWID));
+
+S2 A write transaction with burst type WRAP has an
+aligned address.
+S3 AWVALID is LOW for the first cycle after ARESETn
+goes HIGH.
+
+S4 BRESP remains stable when BVALID is asserted and
+BREADY is LOW.
+
+T4 assert property (@(posedge clock)
+((BVALID == 1) && (BREADY == 0)) |->
+$stable(BRESP));
+
+1) Parameter AWUSER WIDTH must be greater than or equal to 1. [10]
+1 assert property(@(posedge clock)<signal1> >= <value>);
+
+2) A value of X on RDATA valid byte lanes is not permitted when RVALID is HIGH. [1]
+assert property(@(posedge clock) (<signal2> == <value2>) |-> (<signal1> != <value1>));
+
+3) 
+assert property(@(posedge clock) (<signal1> == <value1>) |-> (##1 $stable(<signal1>) [*1:$] ##1 (<signal2> == <value1>)));
+
+4)
+assert property(@(posedge clock) RESET != 1 |-> ( <signal1> != <value>));
+
+5) A value of X on AWID is not permitted when AWVALID is HIGH. [29]
+assert property(@(posedge clock) (<signal2> == <value2>) |-> (<signal1> != <value1>));
+
+6) AWVALID is LOW for the first cycle after ARESETn goes HIGH. [5]
+assert property(@(posedge clock) <signal2> == <value2> |-> ((<signal1> == <value1>) ##1(<signal1> == <value1>)));
+assert property(@(posedge clock) <ARESETn> == <HIGH> |-> ((<AWVALID> == <LOW>) ##1(<AWVALID> == <LOW>)));
+assert property(@(posedge clock) <ARESETn> == <HIGH> |-> ((<AWVALID> == <LOW>) ##1(<AWVALID> == <LOW>)));
+(({0} == {1}) ##1({3} == {4})));
+
+7)
+assert property(@(posedge clock) ((<signal1> == <value1>) && (<signal2> == <value2>)) |-> (<signal3> == <value3>));
+
+8)
+assert property(@(posedge clock) ((<signal2> == <value1>) && (<signal3> == <value2>)) |-> $stable(<signal1>));
+
+9)
+assert property(@(posedge clock) (<signal1> == <vlaue1>) |-> ((<signal2> == <value2>) |-> (<signal3> == <value3>)));
+
+10)
+Recommended that AWREADY is asserted within MAXWAITS cycles of AWVALID being asserted.
+assert property(@(posedge clock) (<signal2> == <value1>) |-> ##[1:<parameter1>](<signal1> == <value1>));
+assert property(@(posedge clock) (<AWVALID> == 1) |-> ##[1:<MAXWAITS>](<AWREADY> == <1>));
+
+
+11) CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH. [4]
+11 assert property(@(posedge clock) (<signal2> != <value3>) |-> !((<signal1> == <value1>) && (##1 <signal1> == <value2>)));
+revised better Verilog by Harris: (((CSYSREQ == HIGH) && (##1 CYSREQ == LOW))) |-> (CSYSACK == HIGH);
+
+CURRENTLY USING:
+7) When AWVALID is HIGH and AWCACHE[1] is LOW then AWCACHE[3:2] are also LOW. [1]
+7 assert property(@(posedge clock) ((<signal1> == <value1>) && (<signal2> == <value2>)) |-> (<signal3> == <value3>));
+
+
+
+
+
+
+ALL RESULTS:
+1) Parameter AWUSER WIDTH must be greater than or equal to 1. [10]
+2) A value of X on RDATA valid byte lanes is not permitted when RVALID is HIGH. [1]
+
+3) When AWVALID is asserted then it remains asserted until AWREADY is HIGH. [5]
+assert property(@(posedge clock) (<signal1> == <value1>) |-> (##1 $stable(<signal1>) [*1:$] ##1 (<signal2> == <value1>)));
+
+4) A value of X on AWVALID is not permitted when not in reset. [13]
+5) A value of X on AWID is not permitted when AWVALID is HIGH. [29]
+6) AWVALID is LOW for the first cycle after ARESETn goes HIGH. [5]
+7) When AWVALID is HIGH and AWCACHE[1] is LOW then AWCACHE[3:2] are also LOW. [1]
+8) AWID must remain stable when AWVALID is asserted and AWREADY is LOW. [28]
+9) When ARVALID is HIGH, if ARCACHE[1] is LOW then ARCACHE[3:2] must also be LOW. [1]
+10) Recommended that AWREADY is asserted within MAXWAITS cycles of AWVALID being asserted. [5]
+11) CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH. [4]
+
+
+PROBLEMS
+
+cluster 3 - when AWVALID is asserted then it remains asserted until AWREADY is HIGH.
+- consequent gets detected for "remains asserted" and "is HIGH"

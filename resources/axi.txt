@@ -1,0 +1,22 @@
+Loading parser from serialized file lib/englishPCFG.ser.gz ... done [0.7 sec].
+SENTENCE - Parameter AWUSER_WIDTH must be greater than or equal to 1.
+(ROOT (S (NP (NNP Parameter) (NNP AWUSER_WIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1))))))) (. .)))
+
+SENTENCE - AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
+(ROOT (S (S (NP (NNP AWADDR)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))))))) (CC and) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW)))) (. .)))
+
+SENTENCE - A value of X on RDATA valid byte lanes is not permitted when RVALID is HIGH.
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP RDATA) (JJ valid) (NN byte) (NNS lanes)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP RVALID)) (VP (VBZ is) (ADJP (JJ HIGH))))))) (. .)))
+
+SENTENCE - when AWVALID is asserted then it remains asserted until AWREADY is HIGH.
+(ROOT (S (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted) (ADVP (RB then)))))) (NP (PRP it)) (VP (VBZ remains) (SBAR (S (VP (VBD asserted) (SBAR (IN until) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADJP (JJ HIGH))))))))) (. .)))
+
+SENTENCE - A value of X on AWID is not permitted when AWVALID is HIGH.
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))))))) (. .)))
+
+SENTENCE - when AWVALID is HIGH and AWCACHE1 is LOW then AWCACHE32 are also LOW.
+(ROOT (S (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (SBAR (S (NP (NNP HIGH) (CC and) (NNP AWCACHE1)) (VP (VBZ is) (ADVP (RB LOW)) (ADVP (RB then)))))))) (NP (NNP AWCACHE32)) (VP (VBP are) (ADVP (RB also)) (ADVP (RB LOW))) (. .)))
+
+SENTENCE - CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH.
+(ROOT (S (NP (NNP CSYSREQ)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (NP (NNP HIGH))) (S (VP (TO to) (VP (VB LOW) (SBAR (WHADVP (WRB when)) (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH))))))))))))) (. .)))
+

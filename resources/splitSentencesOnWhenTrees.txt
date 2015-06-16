@@ -1,0 +1,33 @@
+Loading parser from serialized file lib/englishPCFG.ser.gz ... done [0.7 sec].
+SENTENCE - AWVALID is HIGH.
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+
+SENTENCE - A value of X on AWID is not permitted.
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+SENTENCE - when AWVALID is HIGH.
+(ROOT (S (SBAR (WHADVP (WRB when)) (S (VP (VBD AWVALID)))) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+
+SENTENCE - AWCACHE1 is LOW. 
+(ROOT (S (NP (NNP AWCACHE1)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+
+SENTENCE - AWCACHE32 are also LOW. 
+(ROOT (S (NP (NNP AWCACHE32)) (VP (VBP are) (ADVP (RB also)) (ADVP (RB LOW))) (. .)))
+
+SENTENCE - CSYSACK is HIGH.
+(ROOT (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+
+SENTENCE - CSYSREQ is only permitted to change from HIGH to LOW.
+(ROOT (S (NP (NNP CSYSREQ)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (NP (NNP HIGH))) (PP (TO to) (NP (NNP LOW)))))))) (. .)))
+
+SENTENCE - AWVALID is asserted.
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+
+SENTENCE - AWREADY is LOW. 
+(ROOT (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+
+SENTENCE - AWADDR remains stable.
+(ROOT (S (NP (NNP AWADDR)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+(ROOT (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+

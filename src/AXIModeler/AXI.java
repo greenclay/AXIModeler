@@ -18,7 +18,7 @@ public class AXI {
 
 		Implication imp = checkWhen(tree);
 		if( imp == null ) imp = checkAfter(tree);
-		if( imp == null ) imp = checkWithin(tree); // cluster 10
+		if( imp == null ) imp = checkWithinOf(tree); // for cluster 10
 		if (imp == null) {
 			ArrayList<String> treeWords = getTreeWords(tree);
 			imp = new Implication(treeWords, new ArrayList<String>());
@@ -131,7 +131,6 @@ public class AXI {
 		}
 	}
 
-	
 	// cluster 6
 	// AWVALID is LOW for the first cycle after ARESETn goes HIGH.
 	private static Implication checkAfter(Tree tree) {
@@ -146,39 +145,6 @@ public class AXI {
 				String str = treeWords.get(i);
 
 				if (str.toLowerCase().equals("after")) {
-					newLine = i + 1;
-					break;
-				}
-				conArr.add(str);
-			}
-
-			for (int i = newLine; i < treeWords.size(); i++) {
-				String str = treeWords.get(i);
-				antArr.add(str);
-			}
-
-			antCon = new Implication(antArr, conArr);
-			return antCon;
-		}
-		return antCon;
-	}
-
-	// cluster 10
-	// AWVALID is LOW for the first cycle after ARESETn goes HIGH.
-	// PP - Prepositional Phrase.
-	// IN - Preposition or subordinating conjunction
-	private static Implication checkWithin(Tree tree) {
-		Implication antCon = null;
-		ArrayList<String> antArr = new ArrayList<String>();
-		ArrayList<String> conArr = new ArrayList<String>();
-
-		if (doesTreeMatchPattern(tree, "PP << (IN << within)")) {
-			ArrayList<String> treeWords = getTreeWords(tree);
-			int newLine = 0;
-			for (int i = 0; i < treeWords.size(); i++) {
-				String str = treeWords.get(i);
-
-				if (str.toLowerCase().equals("within")) {
 					newLine = i + 1;
 					break;
 				}
@@ -273,6 +239,39 @@ public class AXI {
 		return antCon;
 	}
 
+	// cluster 10
+	//SENTENCE - Recommended that AWREADY is asserted within MAXWAITS cycles of AWVALID being asserted.
+
+	private static Implication checkWithinOf(Tree tree) {
+		Implication antCon = null;
+		ArrayList<String> antArr = new ArrayList<String>();
+		ArrayList<String> conArr = new ArrayList<String>();
+
+		if (doesTreeMatchPattern(tree, "(IN < within) .. (PP < (IN < of))")) {
+			ArrayList<String> treeWords = getTreeWords(tree);
+			int newLine = 0;
+			for (int i = 0; i < treeWords.size(); i++) {
+				String str = treeWords.get(i);
+
+				if (str.toLowerCase().equals("of")) {
+					newLine = i + 1;
+					break;
+				}
+				conArr.add(str);
+			}
+
+			for (int i = newLine; i < treeWords.size(); i++) {
+				String str = treeWords.get(i);
+				antArr.add(str);
+			}
+
+			antCon = new Implication(antArr, conArr);
+			return antCon;
+		}
+		return antCon;
+	}
+	
+	
 	// cluster 9 the "then" in "ARCACHE1 is LOW then ARCACHE32 must also be LOW."
 	public static ArrayList<ArrayList<String>> splitOnAndOrThen(ArrayList<String> strArr) {
 		int newLine = 0;

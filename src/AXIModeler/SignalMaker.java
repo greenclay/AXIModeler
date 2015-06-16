@@ -47,6 +47,7 @@ public class SignalMaker {
 		findNotInReset(); // cluster 4
 		findChangeFromHighToLow(); // cluster 11
 		findGoesHigh(); // cluster 6
+		findAssertedWithin(); // cluster 10
 	}
 
 	private void findGreaterThanOrEqualOne() {
@@ -182,6 +183,17 @@ public class SignalMaker {
 		pattern = "(ADVP << LOW) $ (VB < be)";
 		if(AXI.doesTreeMatchPattern(tree, pattern)) {
 			verb = "is LOW";
+			return;
+		}
+	}
+	
+	// cluster 10
+	// Recommended that AWREADY is asserted within MAXWAITS cycles of AWVALID being asserted.
+	// Detect asserted within
+	private void findAssertedWithin() {
+		if(AXI.doesTreeMatchPattern(tree, "(PP << within) << of")) {
+			verb = "asserted within";
+			System.out.println("ASSERTED WITHIN");
 			return;
 		}
 	}

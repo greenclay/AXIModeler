@@ -25,6 +25,7 @@ public class TransactionTable {
 		tableTrans.put("be greater than or equal to one", "cluster1");
 
 		tableTrans.put("stable", stable);
+		
 		// cluster 3
 		tableTrans.put("remains asserted", "cluster3");
 		
@@ -41,6 +42,8 @@ public class TransactionTable {
 		
 		tableTrans.put("be greater than", "cluster1");
 		
+		// cluster 10
+		tableTrans.put("asserted within", "cluster10");
 		// cluster 11) CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH. [4]
 		tableTrans.put("change from HIGH to LOW","cluster11");
 	

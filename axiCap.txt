@@ -1,4 +1,16 @@
-AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
-When AWVALID is HIGH and AWCACHE[1] is LOW then AWCACHE[3:2] are also LOW.
-When AWVALID is HIGH and AWCACHE is LOW then AWCACHE are also LOW.
-When AWVALID is asserted then it remains asserted until AWREADY is HIGH.
+AWID must remain stable when AWVALID is asserted and AWREADY is LOW
+A value of X on AWID is not permitted when AWVALID is HIGH
+AWADDR remains stable when AWVALID is asserted and AWREADY is LOW
+A value of X on AWADDR is not permitted when AWVALID is HIGH
+AWLEN remains stable when AWVALID is asserted and AWREADY is LOW
+A value of X on AWLEN is not permitted when AWVALID is HIGH
+AWSIZE remains stable when AWVALID is asserted and AWREADY is LOW
+A value of X on AWSIZE is not permitted when AWVALID is HIGH
+A value of 2b11 on AWBURST is not permitted when AWVALID is HIGH
+A value of X on AWBURST is not permitted when AWVALID is HIGH
+A value of X on AWLOCK is not permitted when AWVALID is HIGH
+AWCACHE remains stable when AWVALID is asserted and AWREADY is LOW
+A value of X on AWCACHE is not permitted when AWVALID is HIGH
+AWPROT remains stable when AWVALID is asserted and AWREADY is LOW
+A value of X on AWPROT is not permitted when AWVALID is HIGH
+When AWVALID is asserted then AWVALID remains asserted until AWREADY is HIGH

@@ -1,0 +1,4 @@
+(VB < change) .. (NP << HIGH) .. (NP << LOW)
+	Cluster 11
+		SENTENCE - CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH.
+		Parses " change from HIGH to LOW"

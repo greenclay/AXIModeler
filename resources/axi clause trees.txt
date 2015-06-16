@@ -1,0 +1,27 @@
+AWVALID is asserted 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+AWREADY is LOW . 
+(ROOT (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+
+(ROOT (S (NP (NNP AWADDR)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+(ROOT (S (NP (NNP RVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP RDATA) (JJ valid) (NN byte) (NNS lanes)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+-- Antecedent --
+RVALID is HIGH . 
+(ROOT (S (NP (NNP RVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+
+
+
+
+(ROOT (S (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted) (ADVP (RB then)))))) (NP (PRP it)) (VP (VBZ remains) (SBAR (S (VP (VBD asserted) (SBAR (IN until) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADJP (JJ HIGH))))))))) (. .)))
+(ROOT (S (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is)))) (VP (VBD asserted)) (. .)))
+(ROOT (S (NP (PRP it)) (VP (VBZ remains) (SBAR (S (VP (VBD asserted) (SBAR (IN until) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADJP (JJ HIGH))))))))) (. .)))
+
+(ROOT (S (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (SBAR (S (NP (NNP HIGH) (CC and) (NNP AWCACHE1)) (VP (VBZ is) (ADVP (RB LOW)) (ADVP (RB then)))))))) (NP (NNP AWCACHE32)) (VP (VBP are) (ADVP (RB also)) (ADVP (RB LOW))) (. .)))
+
+
+(ROOT (S (NP (NNP CSYSREQ)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (NP (NNP HIGH))) (S (VP (TO to) (VP (VB LOW) (SBAR (WHADVP (WRB when)) (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH))))))))))))) (. .)))
+(ROOT (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+(ROOT (S (NP (NNP CSYSREQ)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (NP (NNP HIGH))) (PP (TO to) (NP (NNP LOW)))))))) (. .)))

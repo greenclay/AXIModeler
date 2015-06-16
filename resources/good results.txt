@@ -1,0 +1,154 @@
+Loading parser from serialized file englishPCFG.ser.gz ... done [0.5 sec].
+
+---soft commands parse method start---3 parses
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SOFT COMMANDS: 6detected 3 Parses
+And I think what happened was the new system that we are moving to, the fields aren't compatible with the old system, so I've got some incomplete information for these people which I was tasked to call so do you have a couple of minutes so you can help me update your records? 
+(S (CC And) (S (NP (PRP I)) (VP (VBP think) (SBAR (WHNP (WP what)) (S (VP (VBD happened) (SBAR (S (VP (VBD was) (NP (DT the) (JJ new) (NN system)) (SBAR (IN that) (S (NP (PRP we)) (VP (VBP are) (VP (VBG moving) (PP (TO to)))))))))))))) (PRN (, ,) (S (NP (DT the) (NNS fields)) (VP (VBP are) (RB n't) (ADJP (JJ compatible) (PP (IN with) (NP (DT the) (JJ old) (NN system)))))) (, ,)) (IN so) (S (NP (PRP I)) (VP (VBP 've) (VP (VBN got) (NP (DT some) (JJ incomplete) (NN information)) (PP (IN for) (NP (NP (DT these) (NNS people)) (SBAR (WHNP (WDT which)) (S (NP (PRP I)) (VP (VBD was) (VP (VBN tasked) (S (VP (TO to) (VP (VB call) (SBAR (IN so) (SINV (VBP do) (NP (PRP you)) (VP (VB have) (NP (NP (DT a) (NN couple)) (PP (IN of) (NP (NNS minutes)))) (SBAR (IN so) (S (NP (PRP you)) (VP (MD can) (VP (VB help) (S (NP (PRP me)) (VP (VB update) (NP (PRP$ your) (NNS records))))))))))))))))))))))) (. ?))
+Found: And I think what happened was the new system that we are moving to, the fields aren't compatible with the old system, so I've got some incomplete information for these people which I was tasked to call so do you have a couple of minutes so you can help me update your records? 
+(S (CC And) (S (NP (PRP I)) (VP (VBP think) (SBAR (WHNP (WP what)) (S (VP (VBD happened) (SBAR (S (VP (VBD was) (NP (DT the) (JJ new) (NN system)) (SBAR (IN that) (S (NP (PRP we)) (VP (VBP are) (VP (VBG moving) (PP (TO to)))))))))))))) (PRN (, ,) (S (NP (DT the) (NNS fields)) (VP (VBP are) (RB n't) (ADJP (JJ compatible) (PP (IN with) (NP (DT the) (JJ old) (NN system)))))) (, ,)) (IN so) (S (NP (PRP I)) (VP (VBP 've) (VP (VBN got) (NP (DT some) (JJ incomplete) (NN information)) (PP (IN for) (NP (NP (DT these) (NNS people)) (SBAR (WHNP (WDT which)) (S (NP (PRP I)) (VP (VBD was) (VP (VBN tasked) (S (VP (TO to) (VP (VB call) (SBAR (IN so) (SINV (VBP do) (NP (PRP you)) (VP (VB have) (NP (NP (DT a) (NN couple)) (PP (IN of) (NP (NNS minutes)))) (SBAR (IN so) (S (NP (PRP you)) (VP (MD can) (VP (VB help) (S (NP (PRP me)) (VP (VB update) (NP (PRP$ your) (NNS records))))))))))))))))))))))) (. ?))
+
+Blacklist Verb found: [update]
+Blacklist Noun found: [your, records]
+-----
+I was tasked to call so do you have a couple of minutes so you can help me update your records? 
+(S (NP (PRP I)) (VP (VBD was) (VP (VBN tasked) (S (VP (TO to) (VP (VB call) (SBAR (IN so) (SINV (VBP do) (NP (PRP you)) (VP (VB have) (NP (NP (DT a) (NN couple)) (PP (IN of) (NP (NNS minutes)))) (SBAR (IN so) (S (NP (PRP you)) (VP (MD can) (VP (VB help) (S (NP (PRP me)) (VP (VB update) (NP (PRP$ your) (NNS records)))))))))))))))) (. ?))
+Found: I was tasked to call so do you have a couple of minutes so you can help me update your records? 
+(S (NP (PRP I)) (VP (VBD was) (VP (VBN tasked) (S (VP (TO to) (VP (VB call) (SBAR (IN so) (SINV (VBP do) (NP (PRP you)) (VP (VB have) (NP (NP (DT a) (NN couple)) (PP (IN of) (NP (NNS minutes)))) (SBAR (IN so) (S (NP (PRP you)) (VP (MD can) (VP (VB help) (S (NP (PRP me)) (VP (VB update) (NP (PRP$ your) (NNS records)))))))))))))))) (. ?))
+
+Blacklist Verb found: [update]
+Blacklist Noun found: [your, records]
+-----
+If you go there you'll see there is one file there that you can download and it will clean up any residual mess from that website that we used for the audit.
+(S (SBAR (IN If) (S (NP (PRP you)) (VP (VBP go) (ADVP (RB there))))) (NP (PRP you)) (VP (MD 'll) (VP (VB see) (S (S (NP (EX there)) (VP (VBZ is) (ADVP (NP (CD one) (NN file)) (RB there)) (SBAR (IN that) (S (NP (PRP you)) (VP (MD can) (VP (VB download))))))) (CC and) (S (NP (PRP it)) (VP (MD will) (VP (VB clean) (PRT (RP up)) (NP (NP (DT any) (JJ residual) (NN mess)) (PP (IN from) (NP (DT that) (NN website)))) (SBAR (IN that) (S (NP (PRP we)) (VP (VBD used) (PP (IN for) (NP (DT the) (NN audit)))))))))))) (. .))
+Found: If you go there you'll see there is one file there that you can download and it will clean up any residual mess from that website that we used for the audit.
+(S (SBAR (IN If) (S (NP (PRP you)) (VP (VBP go) (ADVP (RB there))))) (NP (PRP you)) (VP (MD 'll) (VP (VB see) (S (S (NP (EX there)) (VP (VBZ is) (ADVP (NP (CD one) (NN file)) (RB there)) (SBAR (IN that) (S (NP (PRP you)) (VP (MD can) (VP (VB download))))))) (CC and) (S (NP (PRP it)) (VP (MD will) (VP (VB clean) (PRT (RP up)) (NP (NP (DT any) (JJ residual) (NN mess)) (PP (IN from) (NP (DT that) (NN website)))) (SBAR (IN that) (S (NP (PRP we)) (VP (VBD used) (PP (IN for) (NP (DT the) (NN audit)))))))))))) (. .))
+
+Blacklist Verb found: [download]
+Anaphora resolution detected - Replacing That or It
+Blacklist Noun found: [one, file]
+-----
+Um, if you have Internet Explorer, you can open up that. 
+(S (NP (NNP Um)) (, ,) (SBAR (IN if) (S (NP (PRP you)) (VP (VBP have) (NP (NNP Internet) (NNP Explorer))))) (, ,) (NP (PRP you)) (VP (MD can) (VP (VB open) (PRT (RP up)) (NP (DT that)))) (. .))
+Found: Um, if you have Internet Explorer, you can open up that. 
+(S (NP (NNP Um)) (, ,) (SBAR (IN if) (S (NP (PRP you)) (VP (VBP have) (NP (NNP Internet) (NNP Explorer))))) (, ,) (NP (PRP you)) (VP (MD can) (VP (VB open) (PRT (RP up)) (NP (DT that)))) (. .))
+
+Blacklist Verb found: [open]
+-----
+James, you can call me Jim though. 
+(S (NP (NNP James)) (, ,) (NP (PRP you)) (VP (MD can) (VP (VB call) (S (NP (PRP me)) (NP (NNP Jim))) (ADVP (RB though)))) (. .))
+Found: James, you can call me Jim though. 
+(S (NP (NNP James)) (, ,) (NP (PRP you)) (VP (MD can) (VP (VB call) (S (NP (PRP me)) (NP (NNP Jim))) (ADVP (RB though)))) (. .))
+
+-----
+If you could email the cert that would be great.
+(S (SBAR (IN If) (S (NP (PRP you)) (VP (MD could) (VP (VB email) (NP (DT the) (NN cert)))))) (NP (DT that)) (VP (MD would) (VP (VB be) (ADJP (JJ great)))) (. .))
+Found: If you could email the cert that would be great.
+(S (SBAR (IN If) (S (NP (PRP you)) (VP (MD could) (VP (VB email) (NP (DT the) (NN cert)))))) (NP (DT that)) (VP (MD would) (VP (VB be) (ADJP (JJ great)))) (. .))
+
+Blacklist Verb found: [email]
+Blacklist Noun found: [the, cert]
+-----
+
+---hard commands parse method start---2 parses
+
+DIRECT COMMANDS: 4detected 2 Parses
+Found: Now don't give me your full social over the phone but can you give me your last four?
+(S (S (VP (VP (ADVP (RB Now)) (VBP do) (RB n't) (VP (VB give) (NP (PRP me)) (NP (NP (PRP$ your) (JJ full) (JJ social)) (PP (IN over) (NP (DT the) (NN phone)))))) (CC but) (VP (MD can)))) (NP (PRP you)) (VP (VBP give) (NP (PRP me)) (NP (NP (PRP$ your) (JJ last)) (NP (CD four)))) (. ?))
+
+Verb: [give]
+Noun: , [me], [your, full, social], [the, phone], [you], [me], [your, last], [four]
+-----
+Found: Yeah, click on that.
+(S (INTJ (UH Yeah)) (, ,) (VP (VB click) (PP (IN on) (NP (DT that)))) (. .))
+
+Verb: [click]
+Noun: , [that]
+-----
+Found: Click run. 
+(S (NP (NNP Click)) (VP (VBP run)) (. .))
+
+Verb: [Click]
+Noun: , [run]
+-----
+Found: Yeah, click ok. 
+(S (INTJ (UH Yeah)) (, ,) (VP (VB click) (NP (NN ok))) (. .))
+
+Verb: [click]
+Noun: , [ok]
+-----

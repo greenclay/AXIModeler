@@ -34,6 +34,8 @@ public class RWOTable {
 		tableOutputs.put("CSYSREQ", new RWO("CSYSREQ", 1, "boolean", "out"));
 		tableOutputs.put("AWREADY", new RWO("AWREADY", 1, "boolean", "out"));
 		tableOutputs.put("RDATA", new RWO("RDATA", 1, "boolean", "out"));
+		tableOutputs.put("AWLEN", new RWO("AWLEN", 1, "boolean", "out"));
+
 	}
 
 	public static RWO searchInput(String str) {
