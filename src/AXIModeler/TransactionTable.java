@@ -17,13 +17,13 @@ public class TransactionTable {
 	
 	public static void init() {
 		tableTrans = new HashMap<String,String>();
-		tableTrans.put("asserted", high);
 		tableTrans.put("is LOW", low);
 		tableTrans.put("is HIGH", high);
 	
 
 		
-		
+		// cluster 10
+		tableTrans.put("is asserted", high);
 		
 		tableTrans.put("stable", stable);
 		

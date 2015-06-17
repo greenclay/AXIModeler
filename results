@@ -1,0 +1,172 @@
+Loading parser from serialized file lib/englishPCFG.ser.gz ... done [0.4 sec].
+CLUSTER 1
+SENTENCE - Parameter AWUSER_WIDTH must be greater than or equal to one.
+(ROOT (S (NP (NNP Parameter) (NNP AWUSER_WIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+-- Antecedent --
+Parameter AWUSER_WIDTH must be greater than or equal to one . 
+(ROOT (S (NP (NNP Parameter) (NNP AWUSER_WIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+-- Consequent --
+
+(ROOT (INTJ (UH .)))
+
+assert property (@(posedge clock)
+(AWUSER_WIDTH >= 1));
+***********************************************************
+
+CLUSTER 2(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP RDATA) (JJ valid) (NN byte) (NNS lanes)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP RVALID)) (VP (VBZ is) (ADJP (JJ HIGH))))))) (. .)))
+SENTENCE - A value of X on RDATA valid byte lanes is not permitted when RVALID is HIGH.
+
+-- Antecedent --
+RVALID is HIGH . 
+(ROOT (S (NP (NNP RVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on RDATA valid byte lanes is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP RDATA) (JJ valid) (NN byte) (NNS lanes)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(RVALID == 1)
+|-> (RDATA != X));
+***********************************************************
+
+CLUSTER 3
+SENTENCE - when AWVALID is asserted then it remains asserted until AWREADY is HIGH.
+(ROOT (S (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted) (ADVP (RB then)))))) (NP (PRP it)) (VP (VBZ remains) (SBAR (S (VP (VBD asserted) (SBAR (IN until) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADJP (JJ HIGH))))))))) (. .)))
+-- Antecedent --
+when AWVALID is asserted 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+-- Consequent --
+it remains asserted until AWREADY is HIGH . 
+(ROOT (S (NP (PRP it)) (VP (VBZ remains) (SBAR (S (VP (VBD asserted) (SBAR (IN until) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADJP (JJ HIGH))))))))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (##1 $stable(<AWREADY>) [*1:$] ##1 (<AWREADY> == <1>)));
+***********************************************************
+
+CLUSTER 4
+SENTENCE - A value of X on AWVALID is not permitted when not in reset.
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset))))))) (. .)))
+-- Antecedent --
+not in reset . 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on AWVALID is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (AWVALID != X));
+***********************************************************
+
+CLUSTER 5
+SENTENCE - A value of X on AWID is not permitted when AWVALID is HIGH.
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))))))) (. .)))
+-- Antecedent --
+AWVALID is HIGH . 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on AWID is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (AWID != X));
+***********************************************************
+
+CLUSTER 6
+SENTENCE - AWVALID is LOW for the first cycle after ARESETn goes HIGH.
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle))) (SBAR (IN after) (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH)))))) (. .)))
+-- Antecedent --
+ARESETn goes HIGH . 
+(ROOT (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH))) (. .)))
+-- Consequent --
+AWVALID is LOW for the first cycle 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle)))) (. .)))
+
+assert property (@(posedge clock)
+(ARESETn == 1)
+((AWVALID == 0) ##1(AWVALID == 0)));
+***********************************************************
+
+CLUSTER 7
+SENTENCE - when AWVALID is HIGH and AWCACHE1 is LOW then AWCACHE32 are also LOW.
+(ROOT (S (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (SBAR (S (NP (NNP HIGH) (CC and) (NNP AWCACHE1)) (VP (VBZ is) (ADVP (RB LOW)) (ADVP (RB then)))))))) (NP (NNP AWCACHE32)) (VP (VBP are) (ADVP (RB also)) (ADVP (RB LOW))) (. .)))
+-- Antecedent --
+when AWVALID is HIGH 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+AWCACHE1 is LOW 
+(ROOT (S (NP (NNP AWCACHE1)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+AWCACHE32 are also LOW . 
+(ROOT (S (NP (NNP AWCACHE32)) (VP (VBP are) (ADVP (RB also)) (ADVP (RB LOW))) (. .)))
+
+assert property (@(posedge clock)
+((AWVALID == 1) && (AWCACHE1 == 0))
+|-> (AWCACHE32 == 0));
+***********************************************************
+
+CLUSTER 8
+SENTENCE - AWID must remain stable when AWVALID is asserted and AWREADY is LOW.
+(ROOT (S (S (NP (NNP AWID)) (VP (MD must) (VP (VB remain) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted)))))))) (CC and) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW)))) (. .)))
+-- Antecedent --
+AWVALID is asserted 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+AWREADY is LOW . 
+(ROOT (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+AWID must remain stable 
+(ROOT (S (NP (NNP AWID)) (VP (MD must) (VP (VB remain) (ADJP (JJ stable)))) (. .)))
+
+assert property (@(posedge clock)
+((AWVALID == 1) && (AWREADY == 0))
+|-> $stable(AWID));
+***********************************************************
+
+CLUSTER 9
+SENTENCE - When ARVALID is HIGH, if ARCACHE1 is LOW then ARCACHE32 must also be LOW.
+(ROOT (S (SBAR (WHADVP (WRB When)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)) (, ,) (SBAR (IN if) (S (NP (NNP ARCACHE1)) (VP (VBZ is) (ADVP (RB LOW)) (ADVP (RB then)))))))) (NP (NNP ARCACHE32)) (VP (MD must) (ADVP (RB also)) (VP (VB be) (ADVP (RB LOW)))) (. .)))
+-- Antecedent --
+When ARVALID is HIGH , 
+(ROOT (S (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (, ,)) (. .)))
+-- Consequent --
+ARCACHE1 is LOW 
+(ROOT (S (NP (NNP ARCACHE1)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+ARCACHE32 must also be LOW . 
+(ROOT (S (NP (NNP ARCACHE32)) (VP (MD must) (ADVP (RB also)) (VP (VB be) (ADVP (RB LOW)))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> ((ARCACHE1  == 0) |-> (ARCACHE32  == 0)));
+***********************************************************
+
+CLUSTER 10
+SENTENCE - Recommended that AWREADY is asserted within MAXWAITS cycles of AWVALID being asserted.
+(ROOT (S (VP (VB Recommended) (SBAR (IN that) (S (NP (NNP AWREADY)) (VP (VBZ is) (VP (VBN asserted) (PP (IN within) (NP (NP (NNP MAXWAITS) (NNS cycles)) (PP (IN of) (NP (NP (NNP AWVALID)) (VP (VBG being) (VP (VBN asserted)))))))))))) (. .)))
+-- Antecedent --
+AWVALID being asserted . 
+(ROOT (NP (NP (NNP AWVALID)) (VP (VBG being) (VP (VBN asserted))) (. .)))
+-- Consequent --
+Recommended that AWREADY is asserted within MAXWAITS cycles 
+(ROOT (S (VP (VB Recommended) (SBAR (IN that) (S (NP (NNP AWREADY)) (VP (VBZ is) (VP (VBN asserted) (PP (IN within) (NP (NNP MAXWAITS) (NNS cycles)))))))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> ##[1:<parameter1>](MAXWAITS == AWREADY));
+***********************************************************
+
+CLUSTER 11
+SENTENCE - CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH.
+(ROOT (S (NP (NNP CSYSREQ)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (NP (NNP HIGH))) (S (VP (TO to) (VP (VB LOW) (SBAR (WHADVP (WRB when)) (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH))))))))))))) (. .)))
+-- Antecedent --
+CSYSACK is HIGH . 
+(ROOT (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+CSYSREQ is only permitted to change from HIGH to LOW 
+(ROOT (S (NP (NNP CSYSREQ)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (NP (NNP HIGH))) (PP (TO to) (NP (NNP LOW)))))))) (. .)))
+
+assert property (@(posedge clock)
+((CSYSREQ == 1) && (##1 CSYSREQ == 0))
+|-> (CSYSACK == 1));
+***********************************************************
+
+Execution took : 1.994727065 seconds

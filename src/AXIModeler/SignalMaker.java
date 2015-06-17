@@ -119,10 +119,14 @@ public class SignalMaker {
 	private void findIsAsserted() {
 		// Matches the "is asserted" of these sentences
 		// AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
+
+		// detect "being asserted"
+		// cluster 10 - Recommended that AWREADY is asserted within MAXWAITS cycles of AWVALID being asserted. 
+		
 		String pattern1 = "(VP << asserted) $ (VBZ < is)";
 		String pattern2 = "(VP << asserted) $ (VBG < being)";
 		if(AXI.doesTreeMatchPattern(tree, pattern1) || AXI.doesTreeMatchPattern(tree, pattern2)) {
-			verb = "asserted";
+			verb = "is asserted";
 			return;
 		} 
 //		if(AXI.doesTreeMatchPattern(tree, "VP $ (VBZ < is)")) {
@@ -196,7 +200,6 @@ public class SignalMaker {
 		// "(VP << asserted)"
 		if(AXI.doesTreeMatchPattern(tree, "(VP << asserted) << within")) {
 			verb = "asserted within";
-			System.out.println("ASSERTED WITHIN");
 			return;
 		}
 	}
