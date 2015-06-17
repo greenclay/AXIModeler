@@ -17,31 +17,22 @@ public class TransactionTable {
 	
 	public static void init() {
 		tableTrans = new HashMap<String,String>();
+		tableTrans.put("asserted", high);
 		tableTrans.put("is LOW", low);
 		tableTrans.put("is HIGH", high);
-	
 
-		
-		// cluster 10
-		tableTrans.put("is asserted", high);
-		
-		tableTrans.put("stable", stable);
-		
 		// cluster 1
 		tableTrans.put("be greater than or equal to one", "cluster1");
-		tableTrans.put("be greater than", "cluster1");
 		
+		// cluster 2 and 5
+		tableTrans.put("is not permitted", "cluster5");
 		
 		// cluster 3
 		tableTrans.put("remains asserted", "cluster3");
 		
 		// cluster 4
 		tableTrans.put("not in reset", "cluster4");
-		
-		
-		// cluster 5
-		tableTrans.put("is not permitted", "cluster5");
-		
+			
 		// cluster 6
 		tableTrans.put("goes HIGH", high);
 		tableTrans.put("is LOW for the first cycle", "cluster6");
@@ -50,9 +41,11 @@ public class TransactionTable {
 		// cluster 7
 		tableTrans.put("are also LOW", low);
 		
+		// cluster 8
+		tableTrans.put("remains stable", stable);
+		
 		// cluster 10
 		tableTrans.put("asserted within", "cluster10");
-		
 		// cluster 11) CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH. [4]
 		tableTrans.put("change from HIGH to LOW","cluster11");
 	
