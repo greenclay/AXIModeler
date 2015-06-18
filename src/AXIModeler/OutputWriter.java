@@ -4,9 +4,21 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class OutputWriter {
 
+	public static ArrayList<String> output;
+	
+	public static void init() {
+		output = new ArrayList<String>();
+	}
+	
+	public static void log(String str) {
+		output.add(str);
+		
+	}
+	
 	static void printVerilog(Implication imp) {
 		if (imp.verilog != null) {
 			for (String str : imp.verilog.getVerliog()) {

@@ -42,19 +42,19 @@ public class VerilogMaker {
 				line = "|-> " + "(" + signal1.getRWO().getName() + signal1.getAssignment() + ")";
 			} else if (signal1.getAssignment().
 					equals("cluster3")) {
-				line = MessageFormat.format("|-> (##1 $stable(<{0}>) [*1:$] ##1 (<{1}> == <{2}>))", conSignals.get(0).getRWO().getName(), signal1.getRWO().getName(), "1");
+				line = MessageFormat.format("|-> (##1 $stable({0}) [*1:$] ##1 ({1} == {2}))", conSignals.get(0).getRWO().getName(), signal1.getRWO().getName(), "1");
 
 				// Used exception X, rewrite it later to pick X out of sentence
 			} 
 			else if (signal1.getAssignment().equals("cluster5")) {
-				line = MessageFormat.format("|-> ({0} != {1})", conSignals.get(0).getRWO().getName(), "X");
+				line = MessageFormat.format("|-> ({0} != {1})", conSignals.get(0).getRWO().getName(), con);
 			} else if (signal1.getAssignment().equals("cluster11")) {
 				line = MessageFormat.format("(({0} == 1) && (##1 {1} == 0))", conSignals.get(0).getRWO().getName(), conSignals.get(0).getRWO().getName());
 				
 				// Switch the placement of lines of the consequent and antecedent in the verilog since this is a special case.
 				switchConAnt = true;
 			} else if (signal1.getAssignment().equals("cluster6")) {
-				line = "(({0} == {1}) ##1({2} == {3}))";
+				line = "|-> (({0} == {1}) ##1({2} == {3}))";
 				line = MessageFormat.format(line, signal1.getRWO().getName(), "0", signal1.getRWO().getName(), "0");
 			} else if (signal1.getAssignment().equals("cluster10")) {
 				line = "|-> ##[1:<parameter1>]({0} == {1})";

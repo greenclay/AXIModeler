@@ -49,7 +49,7 @@ public class AXI {
 		// result.makeSignals(phrase)
 		// result.searchRWOTable();
 		// result.searchTransactionTable();
-		System.out.println("***********************************************************");
+		System.out.println("\n***********************************************************\n");
 	}
 
 	private static void makeSignals(Implication imp) {

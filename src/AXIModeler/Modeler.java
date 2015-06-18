@@ -22,6 +22,9 @@ public class Modeler {
 	private static TreebankLanguagePack tlp;
 
 	public static void main(String[] args) {
+		
+		OutputWriter.init();
+		
 		long startTime = System.nanoTime();
 
 		LexicalizedParser lp = LexicalizedParser.loadModel("lib/englishPCFG.ser.gz");
@@ -30,26 +33,25 @@ public class Modeler {
 		RWOTable.init();
 		sentenceList = new ArrayList<Sentence>();
 		
-		readFile("axi.txt"); // THE INPUT FILE
+		readFile("axiCap.txt"); // THE INPUT FILE
 		parseSentences(lp);
 		
 		long endTime = System.nanoTime();
 
 		double duration = (endTime - startTime) / (double) 1000000000;  //divide by 1000000 to get milliseconds.
 		System.err.println("Execution took : " + duration + " seconds");
-
+		OutputWriter.log("Execution took : " + duration + " seconds");
 	}
 
 	private static void parseSentences(LexicalizedParser lp) {
 
-		int numOfParses = 5;
+		int numOfParses = 1;
 		int parseType = 10;
 		lpq = lp.lexicalizedParserQuery();
 		tlp = new PennTreebankLanguagePack();
 		List<? extends HasWord> sent;
 		Tokenizer<? extends HasWord> toke;
 		Sentence gottenSentence;
-
 		for (int i = 0; i < sentenceList.size(); i++) {
 			gottenSentence = sentenceList.get(i);
 
@@ -61,10 +63,10 @@ public class Modeler {
 			gottenSentence.numParses = numOfParses;
 
 			int kBestNum = 0;
-			System.err.println("CLUSTER " + (i+1));
+			System.out.println("Sentence number " + (i+1));
 			
-			System.err.println("SENTENCE - " + gottenSentence.getSentenceString());
-			System.out.println(gottenSentence.kBest.get(0).object());
+			System.out.println("SENTENCE - " + gottenSentence.getSentenceString() + "\n");
+			System.out.println(gottenSentence.kBest.get(0).object() + "\n");
 			Tree tree = gottenSentence.kBest.get(0).object();
 			// /////////////////////////////////////// FOPC PARSER SPECIAL
 			// CLASS:
@@ -78,7 +80,6 @@ public class Modeler {
 			RWOTable.init();
 			TransactionTable.init();
 			AXI.parseAndPrint(tree);
-			System.out.println();
 		}
 
 	}
@@ -94,10 +95,11 @@ public class Modeler {
 		int n = 1;
 		try (BufferedReader br = new BufferedReader(new FileReader(s))) {
 			String line = br.readLine();
-			while ((line = br.readLine()) != null) {
+			while (line != null) {
 				
 				// If the sentence starts with "#" then ignore it as it is a comment
 				if (line.startsWith("#")) {
+					line = br.readLine();
 					continue;
 				}
 
@@ -109,6 +111,7 @@ public class Modeler {
 
 				line = br.readLine();
 			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

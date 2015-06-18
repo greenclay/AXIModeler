@@ -14,3 +14,68 @@ A value of X on AWCACHE is not permitted when AWVALID is HIGH
 AWPROT remains stable when AWVALID is asserted and AWREADY is LOW
 A value of X on AWPROT is not permitted when AWVALID is HIGH
 When AWVALID is asserted then AWVALID remains asserted until AWREADY is HIGH
+WID remains stable when WVALID is asserted and WREADY is LOW
+A value of X on WID is not permitted when WVALID is HIGH
+WDATA remains stable when WVALID is asserted and WREADY is LOW
+A value of X on WDATA is not permitted when WVALID is HIGH
+WSTRB remains stable when WVALID is asserted and WREADY is LOW
+A value of X on WSTRB is not permitted when WVALID is HIGH
+WLAST remains stable when WVALID is asserted and WREADY is LOW
+A value of X on WLAST is not permitted when WVALID is HIGH
+A value of X on WVALID is not permitted when not in reset
+A value of X on WREADY is not permitted when not in reset
+BID remains stable when BVALID is asserted and BREADY is LOW
+A value of X on BID is not permitted when BVALID is HIGH
+A slave must only give a write response after the last write data item is transferred
+BRESP remains stable when BVALID is asserted and BREADY is LOW
+A value of X on BRESP is not permitted when BVALID is HIGH
+BVALID is LOW for the first cycle after ARESETn goes HIGH
+A value of X on BVALID is not permitted when not in reset
+A value of X on BREADY is not permitted when not in reset
+ARID remains stable when ARVALID is asserted and ARREADY is LOW
+A value of X on ARID is not permitted when ARVALID is HIGH
+ARADDR remains stable when ARVALID is asserted and ARREADY is LOW
+A value of X on ARADDR is not permitted when ARVALID is HIGH
+ARLEN remains stable when ARVALID is asserted and ARREADY is LOW
+A value of X on ARLEN is not permitted when ARVALID is HIGH
+ARSIZE remains stable when ARVALID is asserted and ARREADY is LOW
+A value of X on ARSIZE is not permitted when ARVALID is HIGH
+A value of 2b11 on ARBURST is not permitted when ARVALID is HIGH
+ARBURST remains stable when ARVALID is asserted and ARREADY is LOW
+A value of X on ARBURST is not permitted when ARVALID is HIGH
+A value of 2b11 on ARLOCK is not permitted when ARVALID is HIGH
+ARLOCK remains stable when ARVALID is asserted and ARREADY is LOW
+A value of X on ARLOCK is not permitted when ARVALID is HIGH
+ARCACHE remains stable when ARVALID is asserted and ARREADY is LOW
+A value of X on ARCACHE is not permitted when ARVALID is HIGH
+ARPROT remains stable when ARVALID is asserted and ARREADY is LOW
+A value of X on ARPROT is not permitted when ARVALID is HIGH
+ARVALID is LOW for the first cycle after ARESETn goes HIGH
+When ARVALID is asserted then ARVALID remains asserted until ARREADY is HIGH
+A value of X on ARVALID is not permitted when not in reset
+A value of X on ARREADY is not permitted when not in reset
+RID remains stable when RVALID is asserted and RREADY is LOW
+RDATA remains stable when RVALID is asserted and RREADY is LOW
+RRESP remains stable when RVALID is asserted and RREADY is LOW
+RLAST remains stable when RVALID is asserted and RREADY is LOW
+A value of X on RLAST is not permitted when RVALID is HIGH
+RVALID is LOW for the first cycle after ARESETn goes HIGH
+When RVALID is asserted then RVALID must remain asserted until RREADY is HIGH
+A value of X on RVALID is not permitted when not in reset
+A value of X on RREADY is not permitted when not in reset
+A value of X on CSYSREQ is not permitted when not in reset
+CSYSACK is only permitted to change from HIGH to LOW when CSYSACK is HIGH
+CSYSACK is only permitted to change from LOW to HIGH when CSYSREQ is HIGH
+A value of X on CSYSACK is not permitted when not in reset
+A value of X on CACTIVE is not permitted when not in reset
+DATAWIDTH parameter is 32 64 128 256 512 or 1024
+Parameter ADDRWIDTH must be between 32 bits and 64 bits inclusive
+Parameter AWUSERWIDTH must be greater than or equal to one
+Parameter BUSERWIDTH must be greater than or equal to one
+Parameter RUSERWIDTH must be greater than or equal to one
+Parameter EXMONWIDTH must be greater than or equal to one
+Parameter IDWIDTH must be greater than or equal to one
+Parameter WDEPTH must be greater than or equal to one
+Parameter MAXRBURSTS must be greater than or equal to one
+Parameter MAXWBURSTS must be greater than or equal to one
+Exclusive access monitor overflow increase EXMONWIDTH parameter

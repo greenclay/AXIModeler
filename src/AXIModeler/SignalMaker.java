@@ -1,7 +1,6 @@
 package AXIModeler;
 import java.util.ArrayList;
 
-import AXIModeler.Implication.Clause;
 import edu.stanford.nlp.trees.Tree;
 
 public class SignalMaker {
@@ -9,11 +8,13 @@ public class SignalMaker {
 	private Tree tree;
 	private ArrayList<String> words;
 	private String verb;
+	private String valueOf; // holds value of like "X" of signal ie "AWADDR has value of X"
 	
 	public SignalMaker(Clause clause) {
 		this.clause = clause;
 		this.tree = clause.getTree();
 		words = clause.getWords();
+		clause.setValueOf(valueOf);
 		makeSignal();
 	}
 	
@@ -48,6 +49,8 @@ public class SignalMaker {
 		findChangeFromHighToLow(); // cluster 11
 		findGoesHigh(); // cluster 6
 		findAssertedWithin(); // cluster 10
+		
+		findValueOf();
 	}
 
 	private void findGreaterThanOrEqualOne() {
@@ -210,6 +213,15 @@ public class SignalMaker {
 	private void findChangeFromHighToLow() {
 		if(AXI.doesTreeMatchPattern(tree, "(VB < change) .. (NP << HIGH) .. (NP << LOW)")) {
 			verb = "change from HIGH to LOW";
+		}
+	}
+	
+	private void findValueOf() {
+		if(AXI.doesTreeMatchPattern(tree, "(NP << value) $ (PP << of)")) {
+			String pattern = "NP [< NNP | <NNS] & > NP & >> (PP << of & $ (NP << value))";
+			String matchYield = AXI.getTreeMatchPatternYield(tree, pattern);
+			valueOf = matchYield;
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~VALUE OF " + valueOf);
 		}
 	}
 	private RWO findRWO() {

@@ -7,53 +7,6 @@ import java.util.logging.*;
 
 public class Implication {
 
-	public class Clause {
-
-		public ArrayList<String> words;
-		public Signal signal;
-		public Tree tree;
-
-		public Clause(ArrayList<String> words) {
-			this.words = words;
-			findTree();
-//			if (words.size() > 0) System.out.println(tree);
-		}
-
-		public void setSignal(Signal signal) {
-			this.signal = signal;
-		}
-
-		public ArrayList<String> getWords() {
-			return words;
-		}
-
-		public Signal getSignal() {
-			return signal;
-		}
-
-		public void setWords(ArrayList<String> words) {
-			this.words = words;
-			findTree();
-		}
-
-		private void findTree() {
-			String sentence = "";
-			for (String str : words) {
-				if (str.equals(".")) continue;
-				if (str.equals("when")) continue;
-				if (str.equals("When")) continue;
-				sentence = sentence + " " + str;
-			}
-			sentence = sentence + ".";
-
-			// if (sentence.equals(".")) sentence = "";
-			tree = Modeler.getTree(sentence);
-		}
-
-		public Tree getTree() {
-			return tree;
-		}
-	}
 
 	public Clause getAnt1() {
 		return ant1;
