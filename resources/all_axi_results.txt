@@ -1,0 +1,1489 @@
+Loading parser from serialized file lib/englishPCFG.ser.gz ... done [0.4 sec].
+Sentence number 1
+SENTENCE - AWID must remain stable when AWVALID is asserted and AWREADY is LOW
+
+(ROOT (S (NP (NNP AWID)) (VP (MD must) (VP (VB remain) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW))))))))))
+
+-- Antecedent --
+AWVALID is asserted 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+AWREADY is LOW 
+(ROOT (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+AWID must remain stable 
+(ROOT (S (NP (NNP AWID)) (VP (MD must) (VP (VB remain) (ADJP (JJ stable)))) (. .)))
+
+assert property (@(posedge clock)
+((AWVALID == 1) && (AWREADY == 0))
+|-> $stable(AWID));
+
+***********************************************************
+
+Sentence number 2
+SENTENCE - A value of X on AWID is not permitted when AWVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+AWVALID is HIGH 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on AWID is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (AWID != X));
+
+***********************************************************
+
+Sentence number 3
+SENTENCE - AWADDR remains stable when AWVALID is asserted and AWREADY is LOW
+
+(ROOT (S (NP (NNP AWADDR)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+AWVALID is asserted 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+AWREADY is LOW 
+(ROOT (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+AWADDR remains stable 
+(ROOT (S (NP (NNP AWADDR)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((AWVALID == 1) && (AWREADY == 0))
+|-> $stable(AWADDR));
+
+***********************************************************
+
+Sentence number 4
+SENTENCE - A value of X on AWADDR is not permitted when AWVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWADDR)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+AWVALID is HIGH 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on AWADDR is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWADDR)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (AWADDR != X));
+
+***********************************************************
+
+Sentence number 5
+SENTENCE - AWLEN remains stable when AWVALID is asserted and AWREADY is LOW
+
+(ROOT (S (NP (NNP AWLEN)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+AWVALID is asserted 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+AWREADY is LOW 
+(ROOT (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+AWLEN remains stable 
+(ROOT (S (NP (NNP AWLEN)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((AWVALID == 1) && (AWREADY == 0))
+|-> $stable(AWLEN));
+
+***********************************************************
+
+Sentence number 6
+SENTENCE - A value of X on AWLEN is not permitted when AWVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWLEN)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+AWVALID is HIGH 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on AWLEN is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWLEN)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (AWLEN != X));
+
+***********************************************************
+
+Sentence number 7
+SENTENCE - AWSIZE remains stable when AWVALID is asserted and AWREADY is LOW
+
+(ROOT (S (NP (NNP AWSIZE)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+AWVALID is asserted 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+AWREADY is LOW 
+(ROOT (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+AWSIZE remains stable 
+(ROOT (S (NP (NNP AWSIZE)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((AWVALID == 1) && (AWREADY == 0))
+|-> $stable(AWSIZE));
+
+***********************************************************
+
+Sentence number 8
+SENTENCE - A value of X on AWSIZE is not permitted when AWVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWSIZE)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+AWVALID is HIGH 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on AWSIZE is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWSIZE)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (AWSIZE != X));
+
+***********************************************************
+
+Sentence number 9
+SENTENCE - A value of 2b11 on AWBURST is not permitted when AWVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNS 2b11)) (PP (IN on) (NP (NNP AWBURST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+AWVALID is HIGH 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of 2b11 on AWBURST is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNS 2b11)) (PP (IN on) (NP (NNP AWBURST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (AWBURST != X));
+
+***********************************************************
+
+Sentence number 10
+SENTENCE - A value of X on AWBURST is not permitted when AWVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWBURST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+AWVALID is HIGH 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on AWBURST is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWBURST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (AWBURST != X));
+
+***********************************************************
+
+Sentence number 11
+SENTENCE - A value of X on AWLOCK is not permitted when AWVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWLOCK)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+AWVALID is HIGH 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on AWLOCK is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWLOCK)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (AWLOCK != X));
+
+***********************************************************
+
+Sentence number 12
+SENTENCE - AWCACHE remains stable when AWVALID is asserted and AWREADY is LOW
+
+(ROOT (S (NP (NNP AWCACHE)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+AWVALID is asserted 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+AWREADY is LOW 
+(ROOT (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+AWCACHE remains stable 
+(ROOT (S (NP (NNP AWCACHE)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((AWVALID == 1) && (AWREADY == 0))
+|-> $stable(AWCACHE));
+
+***********************************************************
+
+Sentence number 13
+SENTENCE - A value of X on AWCACHE is not permitted when AWVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWCACHE)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+AWVALID is HIGH 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on AWCACHE is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWCACHE)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (AWCACHE != X));
+
+***********************************************************
+
+Sentence number 14
+SENTENCE - AWPROT remains stable when AWVALID is asserted and AWREADY is LOW
+
+(ROOT (S (NP (NNP AWPROT)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+AWVALID is asserted 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+AWREADY is LOW 
+(ROOT (S (NP (NNP AWREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+AWPROT remains stable 
+(ROOT (S (NP (NNP AWPROT)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((AWVALID == 1) && (AWREADY == 0))
+|-> $stable(AWPROT));
+
+***********************************************************
+
+Sentence number 15
+SENTENCE - A value of X on AWPROT is not permitted when AWVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWPROT)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+AWVALID is HIGH 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on AWPROT is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP AWPROT)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (AWPROT != X));
+
+***********************************************************
+
+Sentence number 16
+SENTENCE - When AWVALID is asserted then AWVALID remains asserted until AWREADY is HIGH
+
+(ROOT (SBAR (WHADVP (WRB When)) (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted) (ADVP (RB then)) (SBAR (S (NP (NNP AWVALID) (NNS remains)) (VP (VBD asserted) (SBAR (IN until) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))))))
+
+-- Antecedent --
+When AWVALID is asserted 
+(ROOT (S (NP (NNP AWVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+-- Consequent --
+AWVALID remains asserted until AWREADY is HIGH 
+(ROOT (S (NP (NNP AWVALID) (NNS remains)) (VP (VBD asserted) (SBAR (IN until) (S (NP (NNP AWREADY)) (VP (VBZ is) (ADJP (JJ HIGH)))))) (. .)))
+
+assert property (@(posedge clock)
+(AWVALID == 1)
+|-> (AWVALID == 1));
+
+***********************************************************
+
+Sentence number 17
+SENTENCE - WID remains stable when WVALID is asserted and WREADY is LOW
+
+(ROOT (S (NP (NNP WID)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP WVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP WREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+WVALID is asserted 
+(ROOT (S (NP (NNP WVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+WREADY is LOW 
+(ROOT (S (NP (NNP WREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+WID remains stable 
+(ROOT (S (NP (NNP WID)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((WVALID == 1) && (WREADY == 0))
+|-> $stable(WID));
+
+***********************************************************
+
+Sentence number 18
+SENTENCE - A value of X on WID is not permitted when WVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP WVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+WVALID is HIGH 
+(ROOT (S (NP (NNP WVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on WID is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(WVALID == 1)
+|-> (WID != X));
+
+***********************************************************
+
+Sentence number 19
+SENTENCE - WDATA remains stable when WVALID is asserted and WREADY is LOW
+
+(ROOT (S (NP (NNP WDATA)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP WVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP WREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+WVALID is asserted 
+(ROOT (S (NP (NNP WVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+WREADY is LOW 
+(ROOT (S (NP (NNP WREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+WDATA remains stable 
+(ROOT (S (NP (NNP WDATA)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((WVALID == 1) && (WREADY == 0))
+|-> $stable(WDATA));
+
+***********************************************************
+
+Sentence number 20
+SENTENCE - A value of X on WDATA is not permitted when WVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WDATA)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP WVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+WVALID is HIGH 
+(ROOT (S (NP (NNP WVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on WDATA is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WDATA)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(WVALID == 1)
+|-> (WDATA != X));
+
+***********************************************************
+
+Sentence number 21
+SENTENCE - WSTRB remains stable when WVALID is asserted and WREADY is LOW
+
+(ROOT (S (NP (NNP WSTRB)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP WVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP WREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+WVALID is asserted 
+(ROOT (S (NP (NNP WVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+WREADY is LOW 
+(ROOT (S (NP (NNP WREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+WSTRB remains stable 
+(ROOT (S (NP (NNP WSTRB)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((WVALID == 1) && (WREADY == 0))
+|-> $stable(WSTRB));
+
+***********************************************************
+
+Sentence number 22
+SENTENCE - A value of X on WSTRB is not permitted when WVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WSTRB)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP WVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+WVALID is HIGH 
+(ROOT (S (NP (NNP WVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on WSTRB is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WSTRB)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(WVALID == 1)
+|-> (WSTRB != X));
+
+***********************************************************
+
+Sentence number 23
+SENTENCE - WLAST remains stable when WVALID is asserted and WREADY is LOW
+
+(ROOT (S (NP (NNP WLAST)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP WVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP WREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+WVALID is asserted 
+(ROOT (S (NP (NNP WVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+WREADY is LOW 
+(ROOT (S (NP (NNP WREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+WLAST remains stable 
+(ROOT (S (NP (NNP WLAST)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((WVALID == 1) && (WREADY == 0))
+|-> $stable(WLAST));
+
+***********************************************************
+
+Sentence number 24
+SENTENCE - A value of X on WLAST is not permitted when WVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WLAST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP WVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+WVALID is HIGH 
+(ROOT (S (NP (NNP WVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on WLAST is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WLAST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(WVALID == 1)
+|-> (WLAST != X));
+
+***********************************************************
+
+Sentence number 25
+SENTENCE - A value of X on WVALID is not permitted when not in reset
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset)))))))))
+
+-- Antecedent --
+not in reset 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on WVALID is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (WVALID != X));
+
+***********************************************************
+
+Sentence number 26
+SENTENCE - A value of X on WREADY is not permitted when not in reset
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WREADY)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset)))))))))
+
+-- Antecedent --
+not in reset 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on WREADY is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP WREADY)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (WREADY != X));
+
+***********************************************************
+
+Sentence number 27
+SENTENCE - BID remains stable when BVALID is asserted and BREADY is LOW
+
+(ROOT (S (NP (NNP BID)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP BVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP BREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+BVALID is asserted 
+(ROOT (S (NP (NNP BVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+BREADY is LOW 
+(ROOT (S (NP (NNP BREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+BID remains stable 
+(ROOT (S (NP (NNP BID)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((BVALID == 1) && (BREADY == 0))
+|-> $stable(BID));
+
+***********************************************************
+
+Sentence number 28
+SENTENCE - A value of X on BID is not permitted when BVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP BID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP BVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+BVALID is HIGH 
+(ROOT (S (NP (NNP BVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on BID is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP BID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(BVALID == 1)
+|-> (BID != X));
+
+***********************************************************
+
+Sentence number 29
+SENTENCE - A slave must only give a write response after the last write data item is transferred
+
+(ROOT (S (NP (DT A) (NN slave)) (VP (MD must) (ADVP (RB only)) (VP (VB give) (NP (DT a) (JJ write) (NN response)) (SBAR (IN after) (S (NP (DT the) (JJ last) (JJ write) (NNS data) (NN item)) (VP (VBZ is) (VP (VBN transferred)))))))))
+
+-- Antecedent --
+the last write data item is transferred 
+(ROOT (S (NP (DT the) (JJ last) (JJ write) (NNS data) (NN item)) (VP (VBZ is) (VP (VBN transferred))) (. .)))
+-- Consequent --
+A slave must only give a write response 
+(ROOT (S (NP (DT A) (NN slave)) (VP (MD must) (ADVP (RB only)) (VP (VB give) (NP (DT a) (JJ write) (NN response)))) (. .)))
+
+
+***********************************************************
+
+Sentence number 30
+SENTENCE - BRESP remains stable when BVALID is asserted and BREADY is LOW
+
+(ROOT (S (NP (NNP BRESP)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP BVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP BREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+BVALID is asserted 
+(ROOT (S (NP (NNP BVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+BREADY is LOW 
+(ROOT (S (NP (NNP BREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+BRESP remains stable 
+(ROOT (S (NP (NNP BRESP)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((BVALID == 1) && (BREADY == 0))
+|-> $stable(BRESP));
+
+***********************************************************
+
+Sentence number 31
+SENTENCE - A value of X on BRESP is not permitted when BVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP BRESP)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP BVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+BVALID is HIGH 
+(ROOT (S (NP (NNP BVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on BRESP is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP BRESP)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(BVALID == 1)
+|-> (BRESP != X));
+
+***********************************************************
+
+Sentence number 32
+SENTENCE - BVALID is LOW for the first cycle after ARESETn goes HIGH
+
+(ROOT (S (NP (NNP BVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle))) (SBAR (IN after) (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH))))))))
+
+-- Antecedent --
+ARESETn goes HIGH 
+(ROOT (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH))) (. .)))
+-- Consequent --
+BVALID is LOW for the first cycle 
+(ROOT (S (NP (NNP BVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle)))) (. .)))
+
+assert property (@(posedge clock)
+(ARESETn == 1)
+|-> ((BVALID == 0) ##1(BVALID == 0)));
+
+***********************************************************
+
+Sentence number 33
+SENTENCE - A value of X on BVALID is not permitted when not in reset
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP BVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset)))))))))
+
+-- Antecedent --
+not in reset 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on BVALID is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP BVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (BVALID != X));
+
+***********************************************************
+
+Sentence number 34
+SENTENCE - A value of X on BREADY is not permitted when not in reset
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP BREADY)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset)))))))))
+
+-- Antecedent --
+not in reset 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on BREADY is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP BREADY)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (BREADY != X));
+
+***********************************************************
+
+Sentence number 35
+SENTENCE - ARID remains stable when ARVALID is asserted and ARREADY is LOW
+
+(ROOT (S (NP (NNP ARID)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+ARVALID is asserted 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+ARREADY is LOW 
+(ROOT (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+ARID remains stable 
+(ROOT (S (NP (NNP ARID)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((ARVALID == 1) && (ARREADY == 0))
+|-> $stable(ARID));
+
+***********************************************************
+
+Sentence number 36
+SENTENCE - A value of X on ARID is not permitted when ARVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+ARVALID is HIGH 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on ARID is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> (ARID != X));
+
+***********************************************************
+
+Sentence number 37
+SENTENCE - ARADDR remains stable when ARVALID is asserted and ARREADY is LOW
+
+(ROOT (S (NP (NNP ARADDR)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+ARVALID is asserted 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+ARREADY is LOW 
+(ROOT (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+ARADDR remains stable 
+(ROOT (S (NP (NNP ARADDR)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((ARVALID == 1) && (ARREADY == 0))
+|-> $stable(ARADDR));
+
+***********************************************************
+
+Sentence number 38
+SENTENCE - A value of X on ARADDR is not permitted when ARVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARADDR)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+ARVALID is HIGH 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on ARADDR is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARADDR)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> (ARADDR != X));
+
+***********************************************************
+
+Sentence number 39
+SENTENCE - ARLEN remains stable when ARVALID is asserted and ARREADY is LOW
+
+(ROOT (S (NP (NNP ARLEN)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+ARVALID is asserted 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+ARREADY is LOW 
+(ROOT (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+ARLEN remains stable 
+(ROOT (S (NP (NNP ARLEN)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((ARVALID == 1) && (ARREADY == 0))
+|-> $stable(ARLEN));
+
+***********************************************************
+
+Sentence number 40
+SENTENCE - A value of X on ARLEN is not permitted when ARVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARLEN)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+ARVALID is HIGH 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on ARLEN is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARLEN)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> (ARLEN != X));
+
+***********************************************************
+
+Sentence number 41
+SENTENCE - ARSIZE remains stable when ARVALID is asserted and ARREADY is LOW
+
+(ROOT (S (NP (NNP ARSIZE)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+ARVALID is asserted 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+ARREADY is LOW 
+(ROOT (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+ARSIZE remains stable 
+(ROOT (S (NP (NNP ARSIZE)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((ARVALID == 1) && (ARREADY == 0))
+|-> $stable(ARSIZE));
+
+***********************************************************
+
+Sentence number 42
+SENTENCE - A value of X on ARSIZE is not permitted when ARVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARSIZE)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+ARVALID is HIGH 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on ARSIZE is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARSIZE)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> (ARSIZE != X));
+
+***********************************************************
+
+Sentence number 43
+SENTENCE - A value of 2b11 on ARBURST is not permitted when ARVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNS 2b11)) (PP (IN on) (NP (NNP ARBURST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+ARVALID is HIGH 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of 2b11 on ARBURST is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNS 2b11)) (PP (IN on) (NP (NNP ARBURST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> (ARBURST != X));
+
+***********************************************************
+
+Sentence number 44
+SENTENCE - ARBURST remains stable when ARVALID is asserted and ARREADY is LOW
+
+(ROOT (S (NP (NNP ARBURST)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+ARVALID is asserted 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+ARREADY is LOW 
+(ROOT (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+ARBURST remains stable 
+(ROOT (S (NP (NNP ARBURST)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((ARVALID == 1) && (ARREADY == 0))
+|-> $stable(ARBURST));
+
+***********************************************************
+
+Sentence number 45
+SENTENCE - A value of X on ARBURST is not permitted when ARVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARBURST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+ARVALID is HIGH 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on ARBURST is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARBURST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> (ARBURST != X));
+
+***********************************************************
+
+Sentence number 46
+SENTENCE - A value of 2b11 on ARLOCK is not permitted when ARVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNS 2b11)) (PP (IN on) (NP (NNP ARLOCK)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+ARVALID is HIGH 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of 2b11 on ARLOCK is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNS 2b11)) (PP (IN on) (NP (NNP ARLOCK)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> (ARLOCK != X));
+
+***********************************************************
+
+Sentence number 47
+SENTENCE - ARLOCK remains stable when ARVALID is asserted and ARREADY is LOW
+
+(ROOT (S (NP (NNP ARLOCK)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+ARVALID is asserted 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+ARREADY is LOW 
+(ROOT (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+ARLOCK remains stable 
+(ROOT (S (NP (NNP ARLOCK)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((ARVALID == 1) && (ARREADY == 0))
+|-> $stable(ARLOCK));
+
+***********************************************************
+
+Sentence number 48
+SENTENCE - A value of X on ARLOCK is not permitted when ARVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARLOCK)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+ARVALID is HIGH 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on ARLOCK is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARLOCK)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> (ARLOCK != X));
+
+***********************************************************
+
+Sentence number 49
+SENTENCE - ARCACHE remains stable when ARVALID is asserted and ARREADY is LOW
+
+(ROOT (S (NP (NNP ARCACHE)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+ARVALID is asserted 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+ARREADY is LOW 
+(ROOT (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+ARCACHE remains stable 
+(ROOT (S (NP (NNP ARCACHE)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((ARVALID == 1) && (ARREADY == 0))
+|-> $stable(ARCACHE));
+
+***********************************************************
+
+Sentence number 50
+SENTENCE - A value of X on ARCACHE is not permitted when ARVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARCACHE)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+ARVALID is HIGH 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on ARCACHE is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARCACHE)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> (ARCACHE != X));
+
+***********************************************************
+
+Sentence number 51
+SENTENCE - ARPROT remains stable when ARVALID is asserted and ARREADY is LOW
+
+(ROOT (S (NP (NNP ARPROT)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+ARVALID is asserted 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+ARREADY is LOW 
+(ROOT (S (NP (NNP ARREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+ARPROT remains stable 
+(ROOT (S (NP (NNP ARPROT)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((ARVALID == 1) && (ARREADY == 0))
+|-> $stable(ARPROT));
+
+***********************************************************
+
+Sentence number 52
+SENTENCE - A value of X on ARPROT is not permitted when ARVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARPROT)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+ARVALID is HIGH 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on ARPROT is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARPROT)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> (ARPROT != X));
+
+***********************************************************
+
+Sentence number 53
+SENTENCE - ARVALID is LOW for the first cycle after ARESETn goes HIGH
+
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle))) (SBAR (IN after) (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH))))))))
+
+-- Antecedent --
+ARESETn goes HIGH 
+(ROOT (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH))) (. .)))
+-- Consequent --
+ARVALID is LOW for the first cycle 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle)))) (. .)))
+
+assert property (@(posedge clock)
+(ARESETn == 1)
+|-> ((ARVALID == 0) ##1(ARVALID == 0)));
+
+***********************************************************
+
+Sentence number 54
+SENTENCE - When ARVALID is asserted then ARVALID remains asserted until ARREADY is HIGH
+
+(ROOT (SBAR (WHADVP (WRB When)) (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted) (ADVP (RB then)) (SBAR (S (NP (NNP ARVALID) (NNS remains)) (VP (VBD asserted) (SBAR (IN until) (S (NP (NNP ARREADY)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))))))
+
+-- Antecedent --
+When ARVALID is asserted 
+(ROOT (S (NP (NNP ARVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+-- Consequent --
+ARVALID remains asserted until ARREADY is HIGH 
+(ROOT (S (NP (NNP ARVALID) (NNS remains)) (VP (VBD asserted) (SBAR (IN until) (S (NP (NNP ARREADY)) (VP (VBZ is) (ADJP (JJ HIGH)))))) (. .)))
+
+assert property (@(posedge clock)
+(ARVALID == 1)
+|-> (ARVALID == 1));
+
+***********************************************************
+
+Sentence number 55
+SENTENCE - A value of X on ARVALID is not permitted when not in reset
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset)))))))))
+
+-- Antecedent --
+not in reset 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on ARVALID is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (ARVALID != X));
+
+***********************************************************
+
+Sentence number 56
+SENTENCE - A value of X on ARREADY is not permitted when not in reset
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARREADY)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset)))))))))
+
+-- Antecedent --
+not in reset 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on ARREADY is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP ARREADY)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (ARREADY != X));
+
+***********************************************************
+
+Sentence number 57
+SENTENCE - RID remains stable when RVALID is asserted and RREADY is LOW
+
+(ROOT (S (VP (VB RID) (S (NP (NNS remains)) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP RVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP RREADY)) (VP (VBZ is) (ADVP (RB LOW))))))))))
+
+-- Antecedent --
+RVALID is asserted 
+(ROOT (S (NP (NNP RVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+RREADY is LOW 
+(ROOT (S (NP (NNP RREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+RID remains stable 
+(ROOT (S (NP (NNP RID)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((RVALID == 1) && (RREADY == 0))
+|-> $stable(RID));
+
+***********************************************************
+
+Sentence number 58
+SENTENCE - RDATA remains stable when RVALID is asserted and RREADY is LOW
+
+(ROOT (S (NP (NNP RDATA)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP RVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP RREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+RVALID is asserted 
+(ROOT (S (NP (NNP RVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+RREADY is LOW 
+(ROOT (S (NP (NNP RREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+RDATA remains stable 
+(ROOT (S (NP (NNP RDATA)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((RVALID == 1) && (RREADY == 0))
+|-> $stable(RDATA));
+
+***********************************************************
+
+Sentence number 59
+SENTENCE - RRESP remains stable when RVALID is asserted and RREADY is LOW
+
+(ROOT (S (NP (NNP RRESP)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP RVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP RREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+RVALID is asserted 
+(ROOT (S (NP (NNP RVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+RREADY is LOW 
+(ROOT (S (NP (NNP RREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+RRESP remains stable 
+(ROOT (S (NP (NNP RRESP)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((RVALID == 1) && (RREADY == 0))
+|-> $stable(RRESP));
+
+***********************************************************
+
+Sentence number 60
+SENTENCE - RLAST remains stable when RVALID is asserted and RREADY is LOW
+
+(ROOT (S (NP (NNP RLAST)) (VP (VBZ remains) (ADJP (JJ stable)) (SBAR (WHADVP (WRB when)) (S (S (NP (NNP RVALID)) (VP (VBZ is) (VP (VBN asserted)))) (CC and) (S (NP (NNP RREADY)) (VP (VBZ is) (ADVP (RB LOW)))))))))
+
+-- Antecedent --
+RVALID is asserted 
+(ROOT (S (NP (NNP RVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+RREADY is LOW 
+(ROOT (S (NP (NNP RREADY)) (VP (VBZ is) (ADVP (RB LOW))) (. .)))
+-- Consequent --
+RLAST remains stable 
+(ROOT (S (NP (NNP RLAST)) (VP (VBZ remains) (ADJP (JJ stable))) (. .)))
+
+assert property (@(posedge clock)
+((RVALID == 1) && (RREADY == 0))
+|-> $stable(RLAST));
+
+***********************************************************
+
+Sentence number 61
+SENTENCE - A value of X on RLAST is not permitted when RVALID is HIGH
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP RLAST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (S (NP (NNP RVALID)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))
+
+-- Antecedent --
+RVALID is HIGH 
+(ROOT (S (NP (NNP RVALID)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+A value of X on RLAST is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP RLAST)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+(RVALID == 1)
+|-> (RLAST != X));
+
+***********************************************************
+
+Sentence number 62
+SENTENCE - RVALID is LOW for the first cycle after ARESETn goes HIGH
+
+(ROOT (S (NP (NNP RVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle))) (SBAR (IN after) (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH))))))))
+
+-- Antecedent --
+ARESETn goes HIGH 
+(ROOT (S (NP (NNP ARESETn)) (VP (VBZ goes) (NP (NNS HIGH))) (. .)))
+-- Consequent --
+RVALID is LOW for the first cycle 
+(ROOT (S (NP (NNP RVALID)) (VP (VBZ is) (ADVP (RB LOW)) (PP (IN for) (NP (DT the) (JJ first) (NN cycle)))) (. .)))
+
+assert property (@(posedge clock)
+(ARESETn == 1)
+|-> ((RVALID == 0) ##1(RVALID == 0)));
+
+***********************************************************
+
+Sentence number 63
+SENTENCE - When RVALID is asserted then RVALID must remain asserted until RREADY is HIGH
+
+(ROOT (SBAR (WHADVP (WRB When)) (S (NP (NNP RVALID)) (VP (VBZ is) (VP (VBN asserted) (ADVP (RB then)) (SBAR (S (NP (NNP RVALID)) (VP (MD must) (VP (VB remain) (VP (VBN asserted) (SBAR (IN until) (S (NP (NNP RREADY)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))))))))
+
+-- Antecedent --
+When RVALID is asserted 
+(ROOT (S (NP (NNP RVALID)) (VP (VBZ is) (VP (VBN asserted))) (. .)))
+-- Consequent --
+RVALID must remain asserted until RREADY is HIGH 
+(ROOT (S (NP (NNP RVALID)) (VP (MD must) (VP (VB remain) (VP (VBN asserted) (SBAR (IN until) (S (NP (NNP RREADY)) (VP (VBZ is) (ADJP (JJ HIGH)))))))) (. .)))
+
+assert property (@(posedge clock)
+(RVALID == 1)
+|-> (RVALID == 1));
+
+***********************************************************
+
+Sentence number 64
+SENTENCE - A value of X on RVALID is not permitted when not in reset
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP RVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset)))))))))
+
+-- Antecedent --
+not in reset 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on RVALID is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP RVALID)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (RVALID != X));
+
+***********************************************************
+
+Sentence number 65
+SENTENCE - A value of X on RREADY is not permitted when not in reset
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP RREADY)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset)))))))))
+
+-- Antecedent --
+not in reset 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on RREADY is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP RREADY)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (RREADY != X));
+
+***********************************************************
+
+Sentence number 66
+SENTENCE - A value of X on CSYSREQ is not permitted when not in reset
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP CSYSREQ)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset)))))))))
+
+-- Antecedent --
+not in reset 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on CSYSREQ is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP CSYSREQ)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (CSYSREQ != X));
+
+***********************************************************
+
+Sentence number 67
+SENTENCE - CSYSACK is only permitted to change from HIGH to LOW when CSYSACK is HIGH
+
+(ROOT (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (NP (NNP HIGH))) (S (VP (TO to) (VP (VB LOW) (SBAR (WHADVP (WRB when)) (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))))))))
+
+-- Antecedent --
+CSYSACK is HIGH 
+(ROOT (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+CSYSACK is only permitted to change from HIGH to LOW 
+(ROOT (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (NP (NNP HIGH))) (PP (TO to) (NP (NNP LOW)))))))) (. .)))
+
+assert property (@(posedge clock)
+((CSYSACK == 1) && (##1 CSYSACK == 0))
+|-> (CSYSACK == 1));
+
+***********************************************************
+
+Sentence number 68
+SENTENCE - CSYSACK is only permitted to change from LOW to HIGH when CSYSREQ is HIGH
+
+(ROOT (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (ADVP (RB LOW))) (S (VP (TO to) (VP (VB HIGH) (SBAR (WHADVP (WRB when)) (S (NP (NNP CSYSREQ)) (VP (VBZ is) (ADJP (JJ HIGH)))))))))))))))
+
+-- Antecedent --
+CSYSREQ is HIGH 
+(ROOT (S (NP (NNP CSYSREQ)) (VP (VBZ is) (ADJP (JJ HIGH))) (. .)))
+-- Consequent --
+CSYSACK is only permitted to change from LOW to HIGH 
+(ROOT (S (NP (NNP CSYSACK)) (VP (VBZ is) (ADVP (RB only)) (VP (VBN permitted) (S (VP (TO to) (VP (VB change) (PP (IN from) (ADVP (RB LOW))) (S (VP (TO to) (VP (VB HIGH))))))))) (. .)))
+
+assert property (@(posedge clock)
+(CSYSREQ == 1));
+
+***********************************************************
+
+Sentence number 69
+SENTENCE - A value of X on CSYSACK is not permitted when not in reset
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP CSYSACK)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset)))))))))
+
+-- Antecedent --
+not in reset 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on CSYSACK is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP CSYSACK)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (CSYSACK != X));
+
+***********************************************************
+
+Sentence number 70
+SENTENCE - A value of X on CACTIVE is not permitted when not in reset
+
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP CACTIVE)))))) (VP (VBZ is) (RB not) (VP (VBN permitted) (SBAR (WHADVP (WRB when)) (FRAG (PP (RB not) (IN in) (NP (NN reset)))))))))
+
+-- Antecedent --
+not in reset 
+(ROOT (FRAG (RB not) (PP (IN in) (NP (NN reset))) (. .)))
+-- Consequent --
+A value of X on CACTIVE is not permitted 
+(ROOT (S (NP (NP (DT A) (NN value)) (PP (IN of) (NP (NP (NNP X)) (PP (IN on) (NP (NNP CACTIVE)))))) (VP (VBZ is) (RB not) (VP (VBN permitted))) (. .)))
+
+assert property (@(posedge clock)
+RESET != 1
+|-> (CACTIVE != X));
+
+***********************************************************
+
+Sentence number 71
+SENTENCE - DATAWIDTH parameter is 32 64 128 256 512 or 1024
+
+(ROOT (S (NP (NNP DATAWIDTH) (NN parameter)) (VP (VBZ is) (NP (NP (CD 32 64 128 256) (CD 512)) (CC or) (NP (CD 1024))))))
+
+-- Antecedent --
+DATAWIDTH parameter is 32 64 128 256 512 or 1024 
+(ROOT (S (NP (NNP DATAWIDTH) (NN parameter)) (VP (VBZ is) (NP (NP (CD 32 64 128 256) (CD 512)) (CC or) (NP (CD 1024)))) (. .)))
+-- Consequent --
+
+
+
+
+***********************************************************
+
+Sentence number 72
+SENTENCE - Parameter ADDRWIDTH must be between 32 bits and 64 bits inclusive
+
+(ROOT (S (NP (NNP Parameter) (NNP ADDRWIDTH)) (VP (MD must) (VP (VB be) (PP (IN between) (NP (NP (CD 32) (NNS bits)) (CC and) (NP (CD 64) (NNS bits)))) (ADVP (RB inclusive))))))
+
+-- Antecedent --
+Parameter ADDRWIDTH must be between 32 bits 
+(ROOT (S (NP (NNP Parameter) (NNP ADDRWIDTH)) (VP (MD must) (VP (VB be) (PP (IN between) (NP (CD 32) (NNS bits))))) (. .)))
+64 bits inclusive 
+(ROOT (S (NP (CD 64) (NNS bits)) (VP (VBP inclusive)) (. .)))
+-- Consequent --
+
+
+
+
+***********************************************************
+
+Sentence number 73
+SENTENCE - Parameter AWUSERWIDTH must be greater than or equal to one
+
+(ROOT (S (NP (NNP Parameter) (NNP AWUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+
+-- Antecedent --
+Parameter AWUSERWIDTH must be greater than or equal to one 
+(ROOT (S (NP (NNP Parameter) (NNP AWUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+-- Consequent --
+
+
+
+assert property (@(posedge clock)
+(AWUSERWIDTH >= 1));
+
+***********************************************************
+
+Sentence number 74
+SENTENCE - Parameter BUSERWIDTH must be greater than or equal to one
+
+(ROOT (S (NP (NNP Parameter) (NNP BUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+
+-- Antecedent --
+Parameter BUSERWIDTH must be greater than or equal to one 
+(ROOT (S (NP (NNP Parameter) (NNP BUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+-- Consequent --
+
+
+
+assert property (@(posedge clock)
+(BUSERWIDTH >= 1));
+
+***********************************************************
+
+Sentence number 75
+SENTENCE - Parameter RUSERWIDTH must be greater than or equal to one
+
+(ROOT (S (NP (NNP Parameter) (NNP RUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+
+-- Antecedent --
+Parameter RUSERWIDTH must be greater than or equal to one 
+(ROOT (S (NP (NNP Parameter) (NNP RUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+-- Consequent --
+
+
+
+assert property (@(posedge clock)
+(RUSERWIDTH >= 1));
+
+***********************************************************
+
+Sentence number 76
+SENTENCE - Parameter EXMONWIDTH must be greater than or equal to one
+
+(ROOT (S (NP (NNP Parameter) (NNP EXMONWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+
+-- Antecedent --
+Parameter EXMONWIDTH must be greater than or equal to one 
+(ROOT (S (NP (NNP Parameter) (NNP EXMONWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+-- Consequent --
+
+
+
+assert property (@(posedge clock)
+(EXMONWIDTH >= 1));
+
+***********************************************************
+
+Sentence number 77
+SENTENCE - Parameter IDWIDTH must be greater than or equal to one
+
+(ROOT (S (NP (NNP Parameter) (NNP IDWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+
+-- Antecedent --
+Parameter IDWIDTH must be greater than or equal to one 
+(ROOT (S (NP (NNP Parameter) (NNP IDWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+-- Consequent --
+
+
+
+assert property (@(posedge clock)
+(IDWIDTH >= 1));
+
+***********************************************************
+
+Sentence number 78
+SENTENCE - Parameter WDEPTH must be greater than or equal to one
+
+(ROOT (S (NP (NNP Parameter) (NNP WDEPTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+
+-- Antecedent --
+Parameter WDEPTH must be greater than or equal to one 
+(ROOT (S (NP (NNP Parameter) (NNP WDEPTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+-- Consequent --
+
+
+
+assert property (@(posedge clock)
+(WDEPTH >= 1));
+
+***********************************************************
+
+Sentence number 79
+SENTENCE - Parameter MAXRBURSTS must be greater than or equal to one
+
+(ROOT (S (NP (NNP Parameter) (NNP MAXRBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+
+-- Antecedent --
+Parameter MAXRBURSTS must be greater than or equal to one 
+(ROOT (S (NP (NNP Parameter) (NNP MAXRBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+-- Consequent --
+
+
+
+assert property (@(posedge clock)
+(MAXRBURSTS >= 1));
+
+***********************************************************
+
+Sentence number 80
+SENTENCE - Parameter MAXWBURSTS must be greater than or equal to one
+
+(ROOT (S (NP (NNP Parameter) (NNP MAXWBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+
+-- Antecedent --
+Parameter MAXWBURSTS must be greater than or equal to one 
+(ROOT (S (NP (NNP Parameter) (NNP MAXWBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+-- Consequent --
+
+
+
+assert property (@(posedge clock)
+(MAXWBURSTS >= 1));
+
+***********************************************************
+
+Sentence number 81
+SENTENCE - Exclusive access monitor overflow increase EXMONWIDTH parameter
+
+(ROOT (SINV (VP (VBZ Exclusive)) (NP (NN access) (NN monitor) (NN overflow) (NN increase) (NNP EXMONWIDTH) (NNP parameter))))
+
+-- Antecedent --
+Exclusive access monitor overflow increase EXMONWIDTH parameter 
+(ROOT (S (NP (ADJP (JJ Exclusive)) (NN access) (NN monitor) (NN overflow) (NN increase) (NNP EXMONWIDTH)) (VP (VBP parameter)) (. .)))
+-- Consequent --
+
+
+
+
+***********************************************************
+
+Execution took : 5.510526588 seconds

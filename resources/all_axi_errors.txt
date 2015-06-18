@@ -1,0 +1,17 @@
+
+Sentence 29 - Not in original 11
+SENTENCE - A slave must only give a write response after the last write data item is transferred
+
+Preprocess sentences 73 to 80 - turned "1" into "one"
+Parameter AWUSERWIDTH must be greater than or equal to 1 
+to
+Parameter AWUSERWIDTH must be greater than or equal to one
+
+Sentence 71 - Not in original 11
+SENTENCE - DATAWIDTH parameter is 32 64 128 256 512 or 1024
+
+Sentence 72 - Not in original 11
+SENTENCE - Parameter ADDRWIDTH must be between 32 bits and 64 bits inclusive
+
+Sentence 81 - Not in original 11
+SENTENCE - Exclusive access monitor overflow increase EXMONWIDTH parameter
