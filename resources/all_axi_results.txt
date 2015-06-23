@@ -165,7 +165,7 @@ A value of 2b11 on AWBURST is not permitted
 
 assert property (@(posedge clock)
 (AWVALID == 1)
-|-> (AWBURST != X));
+|-> (AWBURST != 2b11));
 
 ***********************************************************
 
@@ -798,7 +798,7 @@ A value of 2b11 on ARBURST is not permitted
 
 assert property (@(posedge clock)
 (ARVALID == 1)
-|-> (ARBURST != X));
+|-> (ARBURST != 2b11));
 
 ***********************************************************
 
@@ -854,7 +854,7 @@ A value of 2b11 on ARLOCK is not permitted
 
 assert property (@(posedge clock)
 (ARVALID == 1)
-|-> (ARLOCK != X));
+|-> (ARLOCK != 2b11));
 
 ***********************************************************
 
@@ -1336,13 +1336,13 @@ Parameter ADDRWIDTH must be between 32 bits
 ***********************************************************
 
 Sentence number 73
-SENTENCE - Parameter AWUSERWIDTH must be greater than or equal to one
+SENTENCE - Parameter AWUSERWIDTH must be greater than or equal to 1
 
-(ROOT (S (NP (NNP Parameter) (NNP AWUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+(ROOT (S (NP (NNP Parameter) (NNP AWUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1)))))))))
 
 -- Antecedent --
-Parameter AWUSERWIDTH must be greater than or equal to one 
-(ROOT (S (NP (NNP Parameter) (NNP AWUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+Parameter AWUSERWIDTH must be greater than or equal to 1 
+(ROOT (S (NP (NNP Parameter) (NNP AWUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1))))))) (. .)))
 -- Consequent --
 
 
@@ -1353,13 +1353,13 @@ assert property (@(posedge clock)
 ***********************************************************
 
 Sentence number 74
-SENTENCE - Parameter BUSERWIDTH must be greater than or equal to one
+SENTENCE - Parameter BUSERWIDTH must be greater than or equal to 1
 
-(ROOT (S (NP (NNP Parameter) (NNP BUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+(ROOT (S (NP (NNP Parameter) (NNP BUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1)))))))))
 
 -- Antecedent --
-Parameter BUSERWIDTH must be greater than or equal to one 
-(ROOT (S (NP (NNP Parameter) (NNP BUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+Parameter BUSERWIDTH must be greater than or equal to 1 
+(ROOT (S (NP (NNP Parameter) (NNP BUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1))))))) (. .)))
 -- Consequent --
 
 
@@ -1370,13 +1370,13 @@ assert property (@(posedge clock)
 ***********************************************************
 
 Sentence number 75
-SENTENCE - Parameter RUSERWIDTH must be greater than or equal to one
+SENTENCE - Parameter RUSERWIDTH must be greater than or equal to 1
 
-(ROOT (S (NP (NNP Parameter) (NNP RUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+(ROOT (S (NP (NNP Parameter) (NNP RUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1)))))))))
 
 -- Antecedent --
-Parameter RUSERWIDTH must be greater than or equal to one 
-(ROOT (S (NP (NNP Parameter) (NNP RUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+Parameter RUSERWIDTH must be greater than or equal to 1 
+(ROOT (S (NP (NNP Parameter) (NNP RUSERWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1))))))) (. .)))
 -- Consequent --
 
 
@@ -1387,13 +1387,13 @@ assert property (@(posedge clock)
 ***********************************************************
 
 Sentence number 76
-SENTENCE - Parameter EXMONWIDTH must be greater than or equal to one
+SENTENCE - Parameter EXMONWIDTH must be greater than or equal to 1
 
-(ROOT (S (NP (NNP Parameter) (NNP EXMONWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+(ROOT (S (NP (NNP Parameter) (NNP EXMONWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1)))))))))
 
 -- Antecedent --
-Parameter EXMONWIDTH must be greater than or equal to one 
-(ROOT (S (NP (NNP Parameter) (NNP EXMONWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+Parameter EXMONWIDTH must be greater than or equal to 1 
+(ROOT (S (NP (NNP Parameter) (NNP EXMONWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1))))))) (. .)))
 -- Consequent --
 
 
@@ -1404,13 +1404,13 @@ assert property (@(posedge clock)
 ***********************************************************
 
 Sentence number 77
-SENTENCE - Parameter IDWIDTH must be greater than or equal to one
+SENTENCE - Parameter IDWIDTH must be greater than or equal to 1
 
-(ROOT (S (NP (NNP Parameter) (NNP IDWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+(ROOT (S (NP (NNP Parameter) (NNP IDWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1)))))))))
 
 -- Antecedent --
-Parameter IDWIDTH must be greater than or equal to one 
-(ROOT (S (NP (NNP Parameter) (NNP IDWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+Parameter IDWIDTH must be greater than or equal to 1 
+(ROOT (S (NP (NNP Parameter) (NNP IDWIDTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1))))))) (. .)))
 -- Consequent --
 
 
@@ -1421,13 +1421,13 @@ assert property (@(posedge clock)
 ***********************************************************
 
 Sentence number 78
-SENTENCE - Parameter WDEPTH must be greater than or equal to one
+SENTENCE - Parameter WDEPTH must be greater than or equal to 1
 
-(ROOT (S (NP (NNP Parameter) (NNP WDEPTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+(ROOT (S (NP (NNP Parameter) (NNP WDEPTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1)))))))))
 
 -- Antecedent --
-Parameter WDEPTH must be greater than or equal to one 
-(ROOT (S (NP (NNP Parameter) (NNP WDEPTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+Parameter WDEPTH must be greater than or equal to 1 
+(ROOT (S (NP (NNP Parameter) (NNP WDEPTH)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1))))))) (. .)))
 -- Consequent --
 
 
@@ -1438,13 +1438,13 @@ assert property (@(posedge clock)
 ***********************************************************
 
 Sentence number 79
-SENTENCE - Parameter MAXRBURSTS must be greater than or equal to one
+SENTENCE - Parameter MAXRBURSTS must be greater than or equal to 1
 
-(ROOT (S (NP (NNP Parameter) (NNP MAXRBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+(ROOT (S (NP (NNP Parameter) (NNP MAXRBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1)))))))))
 
 -- Antecedent --
-Parameter MAXRBURSTS must be greater than or equal to one 
-(ROOT (S (NP (NNP Parameter) (NNP MAXRBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+Parameter MAXRBURSTS must be greater than or equal to 1 
+(ROOT (S (NP (NNP Parameter) (NNP MAXRBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1))))))) (. .)))
 -- Consequent --
 
 
@@ -1455,13 +1455,13 @@ assert property (@(posedge clock)
 ***********************************************************
 
 Sentence number 80
-SENTENCE - Parameter MAXWBURSTS must be greater than or equal to one
+SENTENCE - Parameter MAXWBURSTS must be greater than or equal to 1
 
-(ROOT (S (NP (NNP Parameter) (NNP MAXWBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one)))))))))
+(ROOT (S (NP (NNP Parameter) (NNP MAXWBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1)))))))))
 
 -- Antecedent --
-Parameter MAXWBURSTS must be greater than or equal to one 
-(ROOT (S (NP (NNP Parameter) (NNP MAXWBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD one))))))) (. .)))
+Parameter MAXWBURSTS must be greater than or equal to 1 
+(ROOT (S (NP (NNP Parameter) (NNP MAXWBURSTS)) (VP (MD must) (VP (VB be) (ADJP (ADJP (JJR greater) (PP (IN than))) (CC or) (ADJP (JJ equal) (PP (TO to) (NP (CD 1))))))) (. .)))
 -- Consequent --
 
 
