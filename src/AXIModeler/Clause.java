@@ -44,7 +44,7 @@ public class Clause {
 		sentence = sentence + ".";
 
 		// if (sentence.equals(".")) sentence = "";
-		tree = Modeler.getTree(sentence);
+		tree = AXIModeler.getTree(sentence);
 	}
 
 	public Tree getTree() {

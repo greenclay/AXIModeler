@@ -57,7 +57,7 @@ public class SignalMaker {
 		// Cluster 1 
 		// Matches "be greater than or equal to one" of "Parameter AWUSER_WIDTH must be greater than or equal to one . "
 
-		if(AXI.doesTreeMatchPattern(tree, "(VB < be) .. (ADJP << greater) .. (ADJP << than) .. (ADJP << equal) .. (TO << to) .. (NP << one)")) {
+		if(AXIParser.doesTreeMatchPattern(tree, "(VB < be) .. (ADJP << greater) .. (ADJP << than) .. (ADJP << equal) .. (TO << to) .. (NP << one)")) {
 			verb = "be greater than or equal to one";
 			return;
 		}
@@ -67,7 +67,7 @@ public class SignalMaker {
 		// Matches "remains asserted" of "it remains asserted until AWREADY is HIGH"
 		// Cluster 3 When AWVALID is asserted then it remains asserted until AWREADY is HIGH.
 
-		if(AXI.doesTreeMatchPattern(tree, "(VBZ < remains) .. (VBD < asserted)")) {
+		if(AXIParser.doesTreeMatchPattern(tree, "(VBZ < remains) .. (VBD < asserted)")) {
 			verb = "remains asserted";
 			return;
 		}
@@ -79,8 +79,8 @@ public class SignalMaker {
 		// when AWVALID is asserted then it remains asserted until AWREADY is HIGH.
 		// A value of X on AWID is not permitted when AWVALID is HIGH.
 		// CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH.
-		if(AXI.doesTreeMatchPattern(tree, "ADJP $ (VBZ < is)")) {
-			String matchYield = AXI.getTreeMatchPatternYield(tree, "ADJP $ (VBZ < is)");
+		if(AXIParser.doesTreeMatchPattern(tree, "ADJP $ (VBZ < is)")) {
+			String matchYield = AXIParser.getTreeMatchPatternYield(tree, "ADJP $ (VBZ < is)");
 			if(matchYield.equals("HIGH")) {
 				verb = "is HIGH";
 				return;
@@ -91,7 +91,7 @@ public class SignalMaker {
 	// cluster 4 SENTENCE - A value of X on AWVALID is not permitted when not in reset.
 	// "not in reset"
 	private void findNotInReset() {
-		if(AXI.doesTreeMatchPattern(tree, "(RB < not) .. (NP << reset)")) {
+		if(AXIParser.doesTreeMatchPattern(tree, "(RB < not) .. (NP << reset)")) {
 			verb = "not in reset";
 			return;
 		}
@@ -100,7 +100,7 @@ public class SignalMaker {
 	// cluster 6
 	// goes HIGH
 	private void findGoesHigh() {
-		if(AXI.doesTreeMatchPattern(tree, "(VBZ < goes) $ (NP << HIGH)")) {
+		if(AXIParser.doesTreeMatchPattern(tree, "(VBZ < goes) $ (NP << HIGH)")) {
 			verb = "goes HIGH";
 			return;
 		}
@@ -109,8 +109,8 @@ public class SignalMaker {
 	private void findIsNotPermitted() {
 		// Matches the "is asserted" of these sentences
 		// cluster5 A value of X on RDATA valid byte lanes is not permitted when RVALID is HIGH.
-		if(AXI.doesTreeMatchPattern(tree, "VP $ ((RB < not) $ (VBZ < is))")) {
-			String matchYield = AXI.getTreeMatchPatternYield(tree, "VP $ ((RB < not) $ (VBZ < is))");
+		if(AXIParser.doesTreeMatchPattern(tree, "VP $ ((RB < not) $ (VBZ < is))")) {
+			String matchYield = AXIParser.getTreeMatchPatternYield(tree, "VP $ ((RB < not) $ (VBZ < is))");
 			if(matchYield.equals("permitted")) {
 				verb = "is not permitted";
 				return;
@@ -128,7 +128,7 @@ public class SignalMaker {
 		
 		String pattern1 = "(VP << asserted) $ (VBZ < is)";
 		String pattern2 = "(VP << asserted) $ (VBG < being)";
-		if(AXI.doesTreeMatchPattern(tree, pattern1) || AXI.doesTreeMatchPattern(tree, pattern2)) {
+		if(AXIParser.doesTreeMatchPattern(tree, pattern1) || AXIParser.doesTreeMatchPattern(tree, pattern2)) {
 			verb = "is asserted";
 			return;
 		} 
@@ -145,13 +145,13 @@ public class SignalMaker {
 		// Matches the "remains stable" of these sentences
 		// AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
 		// AWID must remain stable when AWVALID is asserted and AWREADY is LOW. cluster 8
-		if(AXI.doesTreeMatchPattern(tree, "ADJP $ (VBZ < remains)")) {
-			String matchYield = AXI.getTreeMatchPatternYield(tree, "ADJP $ (VBZ < remains)");
+		if(AXIParser.doesTreeMatchPattern(tree, "ADJP $ (VBZ < remains)")) {
+			String matchYield = AXIParser.getTreeMatchPatternYield(tree, "ADJP $ (VBZ < remains)");
 			if(matchYield.equals("stable")) {
 				verb = "stable";
 				return;
 			}
-		} else if (AXI.doesTreeMatchPattern(tree, "(ADJP << stable) $ (VB < remain)")) {
+		} else if (AXIParser.doesTreeMatchPattern(tree, "(ADJP << stable) $ (VB < remain)")) {
 			verb = "stable";
 			return;
 		}
@@ -159,7 +159,7 @@ public class SignalMaker {
 
 	private void isLowFirstCycle() {
 		String pattern = "ADVP $ (VBZ < is) .. (NP << first) .. (NP << cycle)";
-		if(AXI.doesTreeMatchPattern(tree, pattern)) {
+		if(AXIParser.doesTreeMatchPattern(tree, pattern)) {
 			verb = "is LOW for the first cycle";
 			return;
 		}
@@ -170,8 +170,8 @@ public class SignalMaker {
 		// AWADDR remains stable when AWVALID is asserted and AWREADY is LOW.
 		// when AWVALID is HIGH and AWCACHE1 is LOW then AWCACHE32 are also LOW.
 		String pattern = "ADVP $ (VBZ < is)";
-		if(AXI.doesTreeMatchPattern(tree, pattern)) {
-			String matchYield = AXI.getTreeMatchPatternYield(tree, pattern);
+		if(AXIParser.doesTreeMatchPattern(tree, pattern)) {
+			String matchYield = AXIParser.getTreeMatchPatternYield(tree, pattern);
 			if(matchYield.equals("LOW")) {
 				verb = "is LOW";
 				isLowFirstCycle(); // exception for "AWVALID is LOW for the first cycle after ARESETn goes HIGH." 
@@ -181,8 +181,8 @@ public class SignalMaker {
 		}
 		
 		pattern = "(ADVP << LOW) $ (VBP < are)";
-		if(AXI.doesTreeMatchPattern(tree, pattern)) {
-			String matchYield = AXI.getTreeMatchPatternYield(tree, pattern);
+		if(AXIParser.doesTreeMatchPattern(tree, pattern)) {
+			String matchYield = AXIParser.getTreeMatchPatternYield(tree, pattern);
 			if(matchYield.equals("LOW")) {
 				verb = "is LOW";
 				return;
@@ -190,7 +190,7 @@ public class SignalMaker {
 		}
 		
 		pattern = "(ADVP << LOW) $ (VB < be)";
-		if(AXI.doesTreeMatchPattern(tree, pattern)) {
+		if(AXIParser.doesTreeMatchPattern(tree, pattern)) {
 			verb = "is LOW";
 			return;
 		}
@@ -201,7 +201,7 @@ public class SignalMaker {
 	// Detect asserted within
 	private void findAssertedWithin() {
 		// "(VP << asserted)"
-		if(AXI.doesTreeMatchPattern(tree, "(VP << asserted) << within")) {
+		if(AXIParser.doesTreeMatchPattern(tree, "(VP << asserted) << within")) {
 			verb = "asserted within";
 			return;
 		}
@@ -211,15 +211,15 @@ public class SignalMaker {
 	// SENTENCE - CSYSREQ is only permitted to change from HIGH to LOW when CSYSACK is HIGH.
 	// Parses " change from HIGH to LOW"
 	private void findChangeFromHighToLow() {
-		if(AXI.doesTreeMatchPattern(tree, "(VB < change) .. (NP << HIGH) .. (NP << LOW)")) {
+		if(AXIParser.doesTreeMatchPattern(tree, "(VB < change) .. (NP << HIGH) .. (NP << LOW)")) {
 			verb = "change from HIGH to LOW";
 		}
 	}
 	
 	private void findValueOf() {
-		if(AXI.doesTreeMatchPattern(tree, "(NP << value) $ (PP << of)")) {
+		if(AXIParser.doesTreeMatchPattern(tree, "(NP << value) $ (PP << of)")) {
 			String pattern = "NP [< NNP | <NNS] & > NP & >> (PP << of & $ (NP << value))";
-			String matchYield = AXI.getTreeMatchPatternYield(tree, pattern);
+			String matchYield = AXIParser.getTreeMatchPatternYield(tree, pattern);
 			valueOf = matchYield;
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~VALUE OF " + valueOf);
 		}

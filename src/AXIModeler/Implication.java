@@ -2,7 +2,6 @@ package AXIModeler;
 
 import java.util.ArrayList;
 
-import edu.stanford.nlp.trees.Tree;
 import java.util.logging.*;
 
 public class Implication {

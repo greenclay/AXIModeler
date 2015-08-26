@@ -15,7 +15,7 @@ import edu.stanford.nlp.trees.PennTreebankLanguagePack;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreebankLanguagePack;
 
-public class Modeler {
+public class AXIModeler {
 	private static ArrayList<Sentence> sentenceList;
 	private static ArrayList<InputOutput> ioList;
 	private static LexicalizedParserQuery lpq;
@@ -33,7 +33,9 @@ public class Modeler {
 		RWOTable.init();
 		sentenceList = new ArrayList<Sentence>();
 		
-		readFile("axiCap.txt"); // THE INPUT FILE
+		String fileall81 = "axi-all81.txt";
+		String file11 = "axi-11clusters.txt";
+		readFile(file11); // THE INPUT FILE
 		parseSentences(lp);
 		
 		long endTime = System.nanoTime();
@@ -79,7 +81,7 @@ public class Modeler {
 			// Start AXI Parsing
 			RWOTable.init();
 			TransactionTable.init();
-			AXI.parseAndPrint(tree);
+			AXIParser.parseAndPrint(tree);
 		}
 
 	}

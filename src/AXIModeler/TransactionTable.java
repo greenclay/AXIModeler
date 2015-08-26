@@ -2,7 +2,6 @@
 package AXIModeler;
 import java.util.HashMap;
 
-import edu.stanford.nlp.trees.Tree;
 
 
 public class TransactionTable {

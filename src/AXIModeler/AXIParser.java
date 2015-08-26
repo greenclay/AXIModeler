@@ -2,13 +2,12 @@ package AXIModeler;
 
 import java.util.ArrayList;
 
-import edu.stanford.nlp.io.EncodingPrintWriter.err;
 import edu.stanford.nlp.ling.Label;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.tregex.TregexMatcher;
 import edu.stanford.nlp.trees.tregex.TregexPattern;
 
-public class AXI {
+public class AXIParser {
 
 	public static String treeMatchPatternYield;
 	private static int clusterNumber = 0;

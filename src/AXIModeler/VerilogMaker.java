@@ -43,11 +43,11 @@ public class VerilogMaker {
 			} else if (signal1.getAssignment().
 					equals("cluster3")) {
 				line = MessageFormat.format("|-> (##1 $stable({0}) [*1:$] ##1 ({1} == {2}))", conSignals.get(0).getRWO().getName(), signal1.getRWO().getName(), "1");
-
 				// Used exception X, rewrite it later to pick X out of sentence
 			} 
+			// Looking for cluster5 looks for cluster 2 AND 5 since they share the same pattern
 			else if (signal1.getAssignment().equals("cluster5")) {
-				line = MessageFormat.format("|-> ({0} != {1})", conSignals.get(0).getRWO().getName(), con);
+				line = MessageFormat.format("|-> ({0} != {1})", conSignals.get(0).getRWO().getName(), "~!@ REPLACE by PULLING OUT \"X\" from Sentence");
 			} else if (signal1.getAssignment().equals("cluster11")) {
 				line = MessageFormat.format("(({0} == 1) && (##1 {1} == 0))", conSignals.get(0).getRWO().getName(), conSignals.get(0).getRWO().getName());
 				
