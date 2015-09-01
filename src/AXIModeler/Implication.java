@@ -2,7 +2,6 @@ package AXIModeler;
 
 import java.util.ArrayList;
 
-import java.util.logging.*;
 
 public class Implication {
 
@@ -23,7 +22,6 @@ public class Implication {
 		return con2;
 	}
 
-	private static final Logger log = Logger.getLogger( Implication.class.getName() );
 
 	private Clause ant1;
 	private Clause ant2;

@@ -17,19 +17,34 @@ import edu.stanford.nlp.trees.TreebankLanguagePack;
 
 public class AXIModeler {
 	private static ArrayList<Sentence> sentenceList;
-	private static ArrayList<InputOutput> ioList;
 	private static LexicalizedParserQuery lpq;
 	private static TreebankLanguagePack tlp;
-
+	private static String englishPCFGModelPath = "lib/englishPCFG.ser.gz";
+	
 	public static void main(String[] args) {
+		mainMethod();
+	}
+	
+	private static void testMethod(String inputFilename) {
+		LexicalizedParser lp = LexicalizedParser.loadModel(englishPCFGModelPath);
 		
-		OutputWriter.init();
+		RWOTable.init();
+		sentenceList = new ArrayList<Sentence>();
+		
+		String testinput1 = "axi-test-input.txt";
+		
+		readFile(testinput1); // THE INPUT FILE
+		parseSentences(lp);
+		
+	}
+	
+	private static void mainMethod() {
+//		OutputWriter.init();
 		
 		long startTime = System.nanoTime();
 
-		LexicalizedParser lp = LexicalizedParser.loadModel("lib/englishPCFG.ser.gz");
+		LexicalizedParser lp = LexicalizedParser.loadModel(englishPCFGModelPath);
 
-		ioList = new ArrayList<InputOutput>();
 		RWOTable.init();
 		sentenceList = new ArrayList<Sentence>();
 		
@@ -44,11 +59,10 @@ public class AXIModeler {
 		System.err.println("Execution took : " + duration + " seconds");
 		OutputWriter.log("Execution took : " + duration + " seconds");
 	}
-
+	
 	private static void parseSentences(LexicalizedParser lp) {
 
 		int numOfParses = 1;
-		int parseType = 10;
 		lpq = lp.lexicalizedParserQuery();
 		tlp = new PennTreebankLanguagePack();
 		List<? extends HasWord> sent;

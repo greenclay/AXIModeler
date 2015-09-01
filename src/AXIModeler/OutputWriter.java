@@ -10,7 +10,7 @@ public class OutputWriter {
 
 	public static ArrayList<String> output;
 	
-	public static void init() {
+	static {
 		output = new ArrayList<String>();
 	}
 	
