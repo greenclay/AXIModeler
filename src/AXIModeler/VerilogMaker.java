@@ -3,6 +3,9 @@ package AXIModeler;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 
+// Look at the keyword like "cluster2" or "cluster11" that a verb phrase was mapped to in the TransactionTable
+// and matches them to a System Verilog pattern like "|-> ({0} != {1})",
+// lastly it will replace markers like {0} and {1} with the signal names or values
 public class VerilogMaker {
 	ArrayList<String> verilog;
 	ArrayList<Signal> antSignals;
@@ -38,21 +41,26 @@ public class VerilogMaker {
 		if (conSignals.size() == 1) {
 			if (signal1.getAssignment().equals("$stable")) {
 				line = "|-> " + signal1.getAssignment() + "(" + signal1.getRWO().getName() + ")";
+			
 			} else if (signal1.getAssignment().equals(" == 1") || signal1.getAssignment().equals(" == 0")) {
 				line = "|-> " + "(" + signal1.getRWO().getName() + signal1.getAssignment() + ")";
+			
 			} else if (signal1.getAssignment().
 					equals("cluster3")) {
 				line = MessageFormat.format("|-> (##1 $stable({0}) [*1:$] ##1 ({1} == {2}))", conSignals.get(0).getRWO().getName(), signal1.getRWO().getName(), "1");
 				// Used exception X, rewrite it later to pick X out of sentence
 			} 
+			
 			// Looking for cluster5 looks for cluster 2 AND 5 since they share the same pattern
 			else if (signal1.getAssignment().equals("cluster5")) {
 				line = MessageFormat.format("|-> ({0} != {1})", conSignals.get(0).getRWO().getName(), "~!@ REPLACE by PULLING OUT \"X\" from Sentence");
+			
 			} else if (signal1.getAssignment().equals("cluster11")) {
 				line = MessageFormat.format("(({0} == 1) && (##1 {1} == 0))", conSignals.get(0).getRWO().getName(), conSignals.get(0).getRWO().getName());
 				
 				// Switch the placement of lines of the consequent and antecedent in the verilog since this is a special case.
 				switchConAnt = true;
+			
 			} else if (signal1.getAssignment().equals("cluster6")) {
 				line = "|-> (({0} == {1}) ##1({2} == {3}))";
 				line = MessageFormat.format(line, signal1.getRWO().getName(), "0", signal1.getRWO().getName(), "0");
