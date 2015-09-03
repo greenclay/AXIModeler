@@ -56,8 +56,10 @@ public class AXIModeler {
 		long endTime = System.nanoTime();
 
 		double duration = (endTime - startTime) / (double) 1000000000;  //divide by 1000000 to get milliseconds.
-		System.err.println("Execution took : " + duration + " seconds");
-		OutputWriter.log("Execution took : " + duration + " seconds");
+//		System.err.println("Execution took : " + duration + " seconds");
+//		OutputWriter.write("Execution took : " + duration + " seconds");
+		
+		OutputWriter.printAll();
 	}
 	
 	private static void parseSentences(LexicalizedParser lp) {
@@ -79,10 +81,10 @@ public class AXIModeler {
 			gottenSentence.numParses = numOfParses;
 
 			int kBestNum = 0;
-			System.out.println("Sentence number " + (i+1));
+			OutputWriter.write("Sentence number " + (i+1));
 			
-			System.out.println("SENTENCE - " + gottenSentence.getSentenceString() + "\n");
-			System.out.println(gottenSentence.kBest.get(0).object() + "\n");
+			OutputWriter.write("SENTENCE - " + gottenSentence.getSentenceString() + "\n");
+			OutputWriter.write(gottenSentence.kBest.get(0).object() + "\n");
 			Tree tree = gottenSentence.kBest.get(0).object();
 			// /////////////////////////////////////// FOPC PARSER SPECIAL
 			// CLASS:

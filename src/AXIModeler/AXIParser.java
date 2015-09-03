@@ -28,7 +28,7 @@ public class AXIParser {
 		// imp.printConArr();
 
 		imp.printImplication();
-		System.out.println();
+		OutputWriter.write();
 		makeSignals(imp);
 
 //		imp.printSignals();
@@ -38,7 +38,7 @@ public class AXIParser {
 		// analyzeVerb(imp.conArr1);
 		// analyzeVerb(imp.conArr2);
 		//
-		// System.out.println();
+		// OutputWriter.write();
 		// imp.fillSignals();
 		// imp.printSignalsOld();
 		//
@@ -48,7 +48,7 @@ public class AXIParser {
 		// result.makeSignals(phrase)
 		// result.searchRWOTable();
 		// result.searchTransactionTable();
-		System.out.println("\n***********************************************************\n");
+		OutputWriter.write("\n***********************************************************\n");
 	}
 
 	private static void makeSignals(Implication imp) {

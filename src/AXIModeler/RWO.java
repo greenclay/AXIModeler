@@ -20,7 +20,7 @@ public class RWO {
 	
 	public void print() {
 		String str = "name: " + name + ", direction: " + direction  + ", type: " + type + ", num signals: " + numSignals;
-		System.out.println(str);
+		OutputWriter.write(str);
 	}
 	
 	public String getName() {

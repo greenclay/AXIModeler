@@ -25,7 +25,7 @@ public class SignalMaker {
 		
 		String assignment = TransactionTable.searchTrans(verb);
 		
-//		System.out.println(rwo + " - " + verb + " - " + assignment);
+//		OutputWriter.write(rwo + " - " + verb + " - " + assignment);
 		
 		Signal signal = new Signal(rwo, verb, assignment);	
 		
@@ -221,18 +221,18 @@ public class SignalMaker {
 			String pattern = "NP [< NNP | <NNS] & > NP & >> (PP << of & $ (NP << value))";
 			String matchYield = AXIParser.getTreeMatchPatternYield(tree, pattern);
 			valueOf = matchYield;
-			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~VALUE OF " + valueOf);
+			OutputWriter.write("~~~~~~~~~~~~~~~~~~~~~~~~~~~VALUE OF " + valueOf);
 		}
 	}
 	private RWO findRWO() {
 		for (String str : words) {
 			RWO rwo = RWOTable.searchInput(str);
-//			System.out.println(str + " " + rwo);
+//			OutputWriter.write(str + " " + rwo);
 			if (rwo != null) return rwo;
 		}
 		for (String str : words) {
 			RWO rwo = RWOTable.searchOutput(str);
-//			System.out.println(str + " " + rwo);
+//			OutputWriter.write(str + " " + rwo);
 			if (rwo != null) return rwo;
 		}
 		return null;
@@ -241,18 +241,18 @@ public class SignalMaker {
 	public Signal makeAntSignals() {
 
 		Signal signal = null;
-//		System.out.println(phrase);
+//		OutputWriter.write(phrase);
 		
 		// Look for an RWO in the table that matches the phrase
 		for (String str : words) {
 			RWO rwo = RWOTable.searchInput(str);
-//			System.out.println(str + " " + rwo);
+//			OutputWriter.write(str + " " + rwo);
 			
 			// If matching rwo was found in the rwotable
 			if (rwo != null) {
 				for (String str2 : words) {
 					String assignment = TransactionTable.searchTrans(str2);
-//					System.out.println(str2 + " " + assignment);
+//					OutputWriter.write(str2 + " " + assignment);
 						if (assignment != null) {
 							signal = new Signal(rwo, str2, assignment);
 							break;

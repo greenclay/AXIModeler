@@ -13,7 +13,7 @@ public class Signal {
 	
 	public void print() {
 		if (rwo != null) rwo.print();
-		System.out.println("Verb: " + verb  + ", action: " + assignment + "\n");
+		OutputWriter.write("Verb: " + verb  + ", action: " + assignment + "\n");
 	}
 	
 	public void verilogAnt(int tab) {
@@ -24,7 +24,7 @@ public class Signal {
 		else if (tab == 1) {
 			str = "    assert (" + rwo.getName() + assignment + ");";
 		}
-		System.out.println(str);
+		OutputWriter.write(str);
 	}
 	
 	public void verilogCon(int tab) {
@@ -36,7 +36,7 @@ public class Signal {
 			str = "$display(" + rwo.getName() + " " + verb + ");";
 		}
 		
-		System.out.println(str);
+		OutputWriter.write(str);
 	}
 
 	public RWO getRWO() {

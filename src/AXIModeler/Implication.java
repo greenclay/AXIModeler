@@ -85,7 +85,7 @@ public class Implication {
 			verilog = new VerilogMaker(antSignals, conSignals);
 
 //			for (String str : verilog.getVerliog()) {
-//				System.out.println(str);
+//				OutputWriter.write(str);
 //				log.warning(str);
 //			}
 		}
@@ -96,7 +96,7 @@ public class Implication {
 			verilog = new VerilogMaker(antSignals, conSignals);
 
 			for (String str : verilog.getVerliog()) {
-				System.out.println(str);
+				OutputWriter.write(str);
 			}
 		}
 	}
@@ -127,18 +127,18 @@ public class Implication {
 	public Signal makeAntSignals(ArrayList<String> phrase) {
 
 		Signal signal = null;
-		// System.out.println(phrase);
+		// OutputWriter.write(phrase);
 
 		// Look for an RWO in the table that matches the phrase
 		for (String str : phrase) {
 			RWO rwo = RWOTable.searchInput(str);
-			// System.out.println(str + " " + rwo);
+			// OutputWriter.write(str + " " + rwo);
 
 			// If matching rwo was found in the rwotable
 			if (rwo != null) {
 				for (String str2 : phrase) {
 					String assignment = TransactionTable.searchTrans(str2);
-					// System.out.println(str2 + " " + assignment);
+					// OutputWriter.write(str2 + " " + assignment);
 					if (assignment != null) {
 						signal = new Signal(rwo, str2, assignment);
 						break;
@@ -151,16 +151,16 @@ public class Implication {
 
 	public Signal makeConSignals(ArrayList<String> phrase) {
 		Signal signal = null;
-		// System.out.println(phrase);
+		// OutputWriter.write(phrase);
 		// Look for an RWO in the table that matches the phrase
 
 		for (String str : phrase) {
 			RWO rwo = RWOTable.searchOutput(str);
-			// System.out.println(str + " " + rwo);
+			// OutputWriter.write(str + " " + rwo);
 			if (rwo != null) {
 				for (String str2 : phrase) {
 					String assignment = TransactionTable.searchTrans(str2);
-					// System.out.println(str2 + " " + assignment);
+					// OutputWriter.write(str2 + " " + assignment);
 					if (assignment != null) {
 						signal = new Signal(rwo, str2, assignment);
 						break;
@@ -202,7 +202,7 @@ public class Implication {
 		for (String str : antArr1) {
 			String signalValue = TransactionTable.searchTrans(str);
 			if (signalValue != null) {
-				System.out.println(signalValue);
+				OutputWriter.write(signalValue);
 			}
 		}
 
@@ -210,7 +210,7 @@ public class Implication {
 		for (String str : conArr1) {
 			String signalValue = TransactionTable.searchTrans(str);
 			if (signalValue != null) {
-				System.out.println(signalValue);
+				OutputWriter.write(signalValue);
 			}
 		}
 	}
@@ -244,73 +244,73 @@ public class Implication {
 	}
 
 	public void printAntArr() {
-		System.out.println("--Antecedent--");
+		OutputWriter.write("--Antecedent--");
 		String str1 = "";
 		for (String s : antArr1) {
 			str1 = str1 + s + " ";
 		}
-		System.out.println(str1);
+		OutputWriter.write(str1);
 
 		if (antArr2.size() > 0) {
 			String str2 = "";
 			for (String s : antArr2) {
 				str2 = str2 + s + " ";
 			}
-			System.out.println(str2);
+			OutputWriter.write(str2);
 		}
 
 	}
 
 	public void printConArr() {
-		System.out.println("--Consequent--");
+		OutputWriter.write("--Consequent--");
 		String str1 = "";
 		for (String s : conArr1) {
 			str1 = str1 + s + " ";
 		}
-		System.out.println(str1);
+		OutputWriter.write(str1);
 
 		if (antArr2.size() > 0) {
 			String str2 = "";
 			for (String s : conArr2) {
 				str2 = str2 + s + " ";
 			}
-			System.out.println(str2);
+			OutputWriter.write(str2);
 		}
 	}
 
 	public void printImplication() {
-		System.out.println("-- Antecedent --");
+		OutputWriter.write("-- Antecedent --");
 		String str = "";
 		for (String s : ant1.words) {
 			str = str + s + " ";
 		}
-		System.out.println(str);
-		System.out.println(ant1.getTree());
+		OutputWriter.write(str);
+		OutputWriter.write(ant1.getTree());
 
 		if (ant2.words.size() > 0) {
 			str = "";
 			for (String s : ant2.words) {
 				str = str + s + " ";
 			}
-			System.out.println(str);
-			System.out.println(ant2.getTree());
+			OutputWriter.write(str);
+			OutputWriter.write(ant2.getTree());
 		}
 
-		System.out.println("-- Consequent --");
+		OutputWriter.write("-- Consequent --");
 		str = "";
 		for (String s : con1.words) {
 			str = str + s + " ";
 		}
-		System.out.println(str);
-		System.out.println(con1.getTree());
+		OutputWriter.write(str);
+		OutputWriter.write(con1.getTree());
 		
 		if (con2.words.size() > 0) {
 			str = "";
 			for (String s : con2.words) {
 				str = str + s + " ";
 			}
-			System.out.println(str);
-			System.out.println(con2.getTree());
+			OutputWriter.write(str);
+			OutputWriter.write(con2.getTree());
 		}
 	}
 

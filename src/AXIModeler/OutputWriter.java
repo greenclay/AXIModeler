@@ -6,23 +6,33 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import edu.stanford.nlp.trees.Tree;
+
 public class OutputWriter {
 
-	public static ArrayList<String> output;
+	private static ArrayList<String> log;
 	
 	static {
-		output = new ArrayList<String>();
+		log = new ArrayList<String>();
 	}
 	
-	public static void log(String str) {
-		output.add(str);
+	public static void write() {
+		log.add("\n");
+	}
+	
+	public static void write(String str) {
+		log.add(str);
 		
+	}
+	
+	public static void printAll() {
+		log.forEach((str) -> System.out.println(str)); 
 	}
 	
 	static void printVerilog(Implication imp) {
 		if (imp.verilog != null) {
 			for (String str : imp.verilog.getVerliog()) {
-				System.out.println(str);
+				OutputWriter.write(str);
 			}
 		}
 	}
@@ -52,10 +62,18 @@ public class OutputWriter {
 			bw.write(content);
 			bw.close();
 
-			System.out.println("Done");
+			OutputWriter.write("Done");
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static void write(int size) {
+		log.add(Integer.toString(size));
+	}
+
+	public static void write(Tree tree) {
+		log.add(tree.toString());
 	}
 }

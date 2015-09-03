@@ -19,7 +19,7 @@ public class VerilogMaker {
 		String line1 = "assert property (@(posedge clock)";
 		verilog.add(line1);
 		if (antSignals.size() > 0) antVerilog(antSignals);
-		else System.out.println(antSignals.size());
+		else OutputWriter.write(antSignals.size());
 		if (conSignals.size() > 0) conVerilog();
 		addClosingParenthesis();
 		
